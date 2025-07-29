@@ -1,0 +1,1 @@
+<div class="text-6xl">payment canceled</div>

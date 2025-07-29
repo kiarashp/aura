@@ -1,0 +1,44 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+@theme {
+  --color-darkprimary: rgba(42, 37, 75, 1);
+  --color-primary: rgba(78, 77, 147, 1);
+  --color-lightgrey: rgba(249, 249, 249, 1);
+  --color-bordergrey: rgba(235, 232, 244, 1);
+  --color-white: rgba(255, 255, 255, 1);
+  --color-secondary: #fbbc04;
+  --color-borderdark: rgba(202, 198, 218, 1);
+
+  --head2: 20px;
+  --font-size-head3: 18px;
+}
+
+@layer components {
+  .growHover {
+    @apply transition-transform active:scale-95 duration-250 ease-in-out hover:scale-115 translate-z-0 will-change-transform;
+  }
+  .darkHoverTxt {
+    @apply hover:text-borderdark transition duration-200 ease-in-out active:text-primary;
+
+  }
+}
+.head1 {
+  font-size: 36px;
+}
+.head2 {
+  font-size: 32px;
+}
+.head3 {
+  font-size: 24px;
+}
+.head4 {
+  font-size: 20px;
+}
+.head5 {
+  font-size: 16px;
+}
+.head6 {
+  font-size: 14px;
+}

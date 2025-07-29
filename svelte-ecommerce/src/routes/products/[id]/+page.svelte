@@ -1,9 +1,9 @@
 <script>
 	import ProductCard from '$lib/components/ProductCard.svelte';
-	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import { getCart } from '$lib/components/CartProducts.svelte.js';
 
 	let cart = getCart();
+	
 	const { data } = $props();
 
 	// let shit = $derived(page.params.id);
@@ -97,7 +97,7 @@
 	<div class="text-darkprimary text-2xl">You might also like</div>
 	<div class="mt-[33px] grid grid-cols-4 gap-[30px]">
 		{#each data.relatedProducts.products as product (product.id)}
-			<ProductCard {product} customClass="col-span-1" />
+			<ProductCard {product} class="col-span-1" />
 		{/each}
 	</div>
 </div>

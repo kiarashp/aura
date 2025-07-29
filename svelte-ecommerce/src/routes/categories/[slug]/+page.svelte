@@ -12,7 +12,7 @@
 <!-- products -->
 <div class="grid w-full grid-cols-3 gap-4 px-[80px] py-[36px]">
 	{#each $products as product, index (product.id)}
-		<ProductCard {product} customClass="col-span-1" />
+		<ProductCard {product} class="col-span-1" />
 	{/each}
 	<div class="col-span-3 flex w-full items-center justify-center">
 		<SimpleButton btnText="Load more" btnWidth="w-[176px]" />

@@ -1,6 +1,11 @@
-<script>
+<script lang="ts">
+	import type { Category } from '@prisma/client';
+
 	import NewsLetter from './NewsLetter.svelte';
-	let {categories} = $props()
+	interface Props {
+		categories: Category[];
+	}
+	let { categories }: Props = $props();
 </script>
 
 <footer class="bg-darkprimary w-full px-[83px]">
@@ -20,10 +25,9 @@
 			<!--Categories col-->
 			<div class="flex w-1/3 flex-col gap-[12px] text-white">
 				<p class="text-lg">Categories</p>
-				{#each categories as category (category.id) }
+				{#each categories as category (category.id)}
 					<a class="darkHoverTxt text-base" href="/categories{category.slug}">{category.name}</a>
 				{/each}
-
 			</div>
 			<!--Our company col-->
 			<div class="flex w-1/3 flex-col gap-[12px] text-white">
@@ -39,7 +43,9 @@
 		<div class="flex w-1/2 flex-col gap-[16px]">
 			<p class="text-lg text-white">Join our mailing list</p>
 			<!-- news letter -->
-			<NewsLetter />
+			<div class="h-[56px]">
+				<NewsLetter version={1} />
+			</div>
 		</div>
 	</div>
 	<!-- divider -->

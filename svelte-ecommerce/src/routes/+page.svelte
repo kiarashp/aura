@@ -2,7 +2,7 @@
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import NewsLetter from '$lib/components/NewsLetter.svelte';
 	import ProductCard from '$lib/components/ProductCard.svelte';
-	const {data} = $props()
+	const { data } = $props();
 	const products = data.products;
 </script>
 
@@ -97,12 +97,12 @@
 	<!-- group -->
 	<div class="flex flex-wrap gap-[20px]">
 		{#if products && products.length > 0}
-            {#each products.slice(0, 4) as product (product.id)}
-                <ProductCard {product} />
-            {/each}
-        {:else}
-            <p class="text-gray-500 text-center w-full py-10">No products found.</p>
-        {/if}
+			{#each products.slice(0, 4) as product (product.id)}
+				<ProductCard {product} class="grow basis-[305px] flex-col max-w-[395px]" />
+			{/each}
+		{:else}
+			<p class="w-full py-10 text-center text-gray-500">No products found.</p>
+		{/if}
 	</div>
 	<div class="mt-[35px] flex items-center justify-center">
 		<SimpleButton btnText="View all" />
@@ -164,15 +164,7 @@
 		</p>
 		<!-- sign up form -->
 		<div class=" mt-[72px] min-w-[354px]">
-			<NewsLetter
-				inputBG="bg-lightgrey"
-				btnBG="bg-darkprimary"
-				hoverBtnBG="hover:bg-primary"
-				btnTxtCol="text-white"
-				btnTxtSize="text-base"
-				inputTxtCol="text-[rgba(42, 37, 75, 0.20)]"
-				inputName="joingTheClubField"
-			/>
+			<div class="h-[56px] w-full"><NewsLetter version={2} /></div>
 		</div>
 	</div>
 </div>

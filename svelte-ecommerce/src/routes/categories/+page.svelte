@@ -54,7 +54,7 @@
 	<!-- products -->
 	<div class="grid w-3/4 grid-cols-3 gap-4 py-[36px]">
 		{#each products as product, index (product.id)}
-			<ProductCard {product} customClass="col-span-1" />
+			<ProductCard {product} class="col-span-1" />
 		{/each}
 		<div class="col-span-3 flex w-full items-center justify-center">
 			<SimpleButton btnText="Load more" btnWidth="w-[176px]" />

@@ -13,13 +13,10 @@
 
 
 </script>
-<button class=" hover:bg-borderdark cursor-pointer transition duration-300 {btnWidth} 
-min-h-[56px] text-darkprimary bg-lightgrey" {...restProps}><span>{btnText}</span></button>
 
-<button 
-	class="hover:bg-borderdark cursor-pointer transition duration-300 {btnWidth} min-h-[56px] text-darkprimary bg-lightgrey" 
-	{...restProps}
->
+
+<button class="hover:bg-borderdark cursor-pointer transition duration-300 {btnWidth}
+	 min-h-[56px] text-darkprimary bg-lightgrey active:bg-darkprimary active:text-white" {...restProps} >
 	{#if children}
 		{@render children()}
 	{:else}

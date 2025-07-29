@@ -1,7 +1,12 @@
-<script>
+<script lang="ts">
+	import type { Category } from '@prisma/client';
+
 	import CartButton from '$lib/components/CartButton.svelte';
 	import { page } from '$app/state';
-	const { allCategories } = $props();
+	interface props{
+		allCategories : Category[]
+	}
+	const { allCategories }:props = $props();
 </script>
 
 <div class="w-full flex-col bg-white px-[28px]">

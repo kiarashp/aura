@@ -4,7 +4,7 @@
 
 <!--join the club -->
 <div
-	class="text-surface-950 dark:text-surface-200 bg-surface-500 dark:bg-primary-800 flex min-h-[481px] items-center justify-center px-[80px] py-[50px]"
+	class="text-surface-950 dark:text-surface-200 bg-surface-500 dark:bg-primary-800 flex min-h-[481px] items-center justify-center defaultPadding py-[50px]"
 >
 	<div class="bg-surface-50 dark:bg-primary-900 flex min-h-[364px] w-full flex-col items-center">
 		<p class="text-primary-950 dark:text-surface-100 pt-[68px] text-2xl">

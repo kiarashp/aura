@@ -3,13 +3,14 @@
 
 <!-- what makes us different -->
 <div
-	class="text-surface-950 dark:text-surface-200 bg-surface-50 dark:bg-primary-900 flex min-h-[355px] flex-col px-[80px] pt-[60px]"
+	class="text-surface-950 dark:text-surface-200 bg-surface-50 dark:bg-primary-900 flex min-h-[355px]
+	 flex-col defaultPadding md:pt-[60px]"
 >
 	<!--title-->
-	<p class="w-full text-center text-2xl">What makes our brand different</p>
-	<div class="mt-[51px] flex gap-[20px]">
+	<p class="w-full lg:text-center header">What makes our brand different</p>
+	<div class="mt-[51px] grid gap-x-[8px] gap-y-4  md:gap-x-[20px] grid-cols-4 ">
 		<!-- col 1 -->
-		<div class="flex grow basis-[305px] flex-col">
+		<div class="col-span-4 sm:col-span-2 md:col-span-1 flex  basis-[305px] flex-col">
 			<!-- icon -->
 			<div class="h-[24px] w-[24px]">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -24,7 +25,7 @@
 			<p class="mt-[8px] text-base">Order before 3pm and get your order the next day as standard</p>
 		</div>
 		<!-- col 2 -->
-		<div class="flex grow basis-[305px] flex-col">
+		<div class="col-span-4 sm:col-span-2 md:col-span-1 flex grow basis-[305px] flex-col">
 			<!-- icon -->
 			<div class="h-[24px] w-[24px]">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"
@@ -41,7 +42,7 @@
 			</p>
 		</div>
 		<!-- col 3 -->
-		<div class="flex grow basis-[305px] flex-col">
+		<div class="col-span-4 sm:col-span-2 md:col-span-1 flex grow basis-[305px] flex-col">
 			<!-- icon -->
 			<div class="h-[24px] w-[24px]">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"
@@ -69,7 +70,7 @@
 			</p>
 		</div>
 		<!-- col 4 -->
-		<div class="flex grow basis-[305px] flex-col">
+		<div class="col-span-4 sm:col-span-2 md:col-span-1 flex grow basis-[305px] flex-col">
 			<!-- icon -->
 			<div class="h-[24px] w-[24px]">
 				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"

@@ -8,7 +8,7 @@
 	let { children, data } = $props();
 </script>
 
-<div class="mx-auto flex min-h-screen max-w-[1800px] flex-col overflow-hidden ">
+<div class="mx-auto flex min-h-screen max-w-[1800px] flex-col ">
 	<Header allCategories={data.allCategories} />
 	<!-- <HeaderSimple allCategories={data.allCategories}/> -->
 	{@render children()}

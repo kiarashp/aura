@@ -38,13 +38,13 @@
 	<div
 		class="sticky top-0 z-50 w-full transition-all duration-200 {isScrolled
 			? 'bg-surface-100/95 dark:bg-surface-950/95 border-surface-200/50 dark:border-surface-800/50 border-b shadow-md backdrop-blur-md'
-			: 'bg-surface-100 dark:bg-surface-950'} flex-col md:px-[28px]"
+			: 'bg-surface-100 dark:bg-surface-950'} flex-col defaultPadding"
 	>
-		<div class="bg-surface-100 dark:bg-surface-950 w-full flex-col px-[28px]">
+		<div class="bg-surface-100 dark:bg-surface-950 w-full flex-col">
 			<!-- Mobile nav -->
 			{#if isMobileMenuOpen}
 				<nav
-					class="bg-surface-100 dark:bg-surface-950 border-surface-200 dark:border-surface-800 absolute left-0 top-full w-full border-t py-4 sm:hidden"
+					class="bg-surface-100 dark:bg-surface-950 border-surface-200 dark:border-surface-800 absolute left-0 top-full w-full border-t py-4 md:hidden"
 				>
 					<div class="flex flex-col gap-4 px-[28px]">
 						{#each allCategories as category (category.slug)}
@@ -66,23 +66,24 @@
 			<!-- top bar -->
 			<div class=" grid h-[70px] w-full grid-cols-12">
 				<!-- logo -->
+				 
 				<a
 					href="/"
 					class="growHover text-primary-900 dark:text-surface-50 
-					col-span-6 md:col-span-12 col-start-1
+					col-span-6  col-start-1 md:col-end-13 md:text-center
 					  row-start-1 justify-self-start md:justify-self-center self-center text-3xl font-medium"
 					>Avion</a
 				>
 
 				<!--cart and profile -->
 				<div
-					class="col-span-6 md:col-span-3 col-start-7 row-start-1 flex flex-row gap-3 self-center 
+					class="col-span-6 md:col-start-9 md:col-end-13 col-start-7 row-start-1 flex flex-row gap-3 self-center 
 					justify-self-end pe-2"
 				>
 					<!-- Mobile menu button -->
 					<button
 						aria-label="mobile menu"
-						class="flex flex-col gap-1 p-2 sm:hidden"
+						class="flex flex-col gap-1 p-2 md:hidden"
 						onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
 					>
 						<span

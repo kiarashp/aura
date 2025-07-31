@@ -36,7 +36,7 @@
 			{product.name}
 		</p>
 		<p class="mt-[8px] text-sm text-surface-950 ">
-			{product.price}
+			€{product.price}
 		</p>
 	</div>
 </a>

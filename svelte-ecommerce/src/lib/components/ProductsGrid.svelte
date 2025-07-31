@@ -3,7 +3,7 @@
     import ProductCard from "./ProductCard.svelte";
 interface props{
     products : Product[];
-    customClass: string;
+    customClass?: string;
     cellCustomClass?:string;
 }
 	let { products,customClass="grid-cols-3 gap-6",cellCustomClass }:props = $props();

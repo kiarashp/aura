@@ -8,55 +8,102 @@
 	interface props {
 		allCategories: Category[];
 	}
+	let isMobileMenuOpen = $state(false);
 	const { allCategories }: props = $props();
 
 	// handling scrolling
 	let isScrolled = $state(false);
-	let sentinel:HTMLElement 
+	let sentinel: HTMLElement;
 
 	onMount(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        isScrolled = !entry.isIntersecting;
-      },
-      { 
-        rootMargin: '-1px 0px 0px 0px' // Triggers when element is 1px out of view
-      }
-    );
+		const observer = new IntersectionObserver(
+			([entry]) => {
+				isScrolled = !entry.isIntersecting;
+			},
+			{
+				rootMargin: '-1px 0px 0px 0px' // Triggers when element is 1px out of view
+			}
+		);
 
-    if (sentinel) {
-      observer.observe(sentinel);
-    }
+		if (sentinel) {
+			observer.observe(sentinel);
+		}
 
-    return () => observer.disconnect();
-  });
+		return () => observer.disconnect();
+	});
 </script>
 
-<div class="h-[1px] bg-transparent w-full" bind:this={sentinel}></div>
-<div class="sticky top-0 z-50 w-full" data-sticky >
+<div class="h-[1px] w-full bg-transparent" bind:this={sentinel}></div>
+<div class="sticky top-0 z-50 w-full" data-sticky>
 	<div
-		  class="sticky top-0 z-50 w-full transition-all duration-200 {isScrolled 
-    ? 'bg-surface-100/95 dark:bg-surface-950/95 backdrop-blur-md shadow-md border-b border-surface-200/50 dark:border-surface-800/50' 
-    : 'bg-surface-100 dark:bg-surface-950'  } flex-col px-[28px]">
-	 <div class="bg-surface-100 dark:bg-surface-950 w-full flex-col px-[28px]">
+		class="sticky top-0 z-50 w-full transition-all duration-200 {isScrolled
+			? 'bg-surface-100/95 dark:bg-surface-950/95 border-surface-200/50 dark:border-surface-800/50 border-b shadow-md backdrop-blur-md'
+			: 'bg-surface-100 dark:bg-surface-950'} flex-col md:px-[28px]"
+	>
+		<div class="bg-surface-100 dark:bg-surface-950 w-full flex-col px-[28px]">
+			<!-- Mobile nav -->
+			{#if isMobileMenuOpen}
+				<nav
+					class="bg-surface-100 dark:bg-surface-950 border-surface-200 dark:border-surface-800 absolute left-0 top-full w-full border-t py-4 sm:hidden"
+				>
+					<div class="flex flex-col gap-4 px-[28px]">
+						{#each allCategories as category (category.slug)}
+							<a
+								href="/categories{category.slug}"
+								onclick={() => (isMobileMenuOpen = false)}
+								class="py-2 text-lg"
+							>
+								{category.name}
+							</a>
+						{/each}
+						<a href="/about" onclick={() => (isMobileMenuOpen = false)} class="py-2 text-lg"
+							>About us</a
+						>
+					</div>
+				</nav>
+			{/if}
+
 			<!-- top bar -->
 			<div class=" grid h-[70px] w-full grid-cols-12">
 				<!-- logo -->
 				<a
 					href="/"
-					class="growHover text-primary-900 dark:text-surface-50 col-span-12 col-start-1 row-start-1 place-self-center text-3xl font-medium"
+					class="growHover text-primary-900 dark:text-surface-50 
+					col-span-6 md:col-span-12 col-start-1
+					  row-start-1 justify-self-start md:justify-self-center self-center text-3xl font-medium"
 					>Avion</a
 				>
 
 				<!--cart and profile -->
 				<div
-					class="col-span-3 col-start-10 row-start-1 flex flex-row gap-3 self-center justify-self-end pe-2"
+					class="col-span-6 md:col-span-3 col-start-7 row-start-1 flex flex-row gap-3 self-center 
+					justify-self-end pe-2"
 				>
-					<a href="/cart">
+					<!-- Mobile menu button -->
+					<button
+						aria-label="mobile menu"
+						class="flex flex-col gap-1 p-2 sm:hidden"
+						onclick={() => (isMobileMenuOpen = !isMobileMenuOpen)}
+					>
+						<span
+							class="h-0.5 w-5 bg-current transition-transform {isMobileMenuOpen
+								? 'translate-y-1.5 rotate-45'
+								: ''}"
+						></span>
+						<span
+							class="h-0.5 w-5 bg-current transition-opacity {isMobileMenuOpen ? 'opacity-0' : ''}"
+						></span>
+						<span
+							class="h-0.5 w-5 bg-current transition-transform {isMobileMenuOpen
+								? '-translate-y-1.5 -rotate-45'
+								: ''}"
+						></span>
+					</button>
+					<a href="/cart" class="hidden md:block">
 						<CartButton />
 					</a>
 					<!--profile-->
-					<div class="h-[22px] w-[22px]">
+					<a href="/profile" class="growHover h-[22px] w-[22px] hidden md:block" aria-label="profile">
 						<svg
 							viewBox="0 0 16 16"
 							fill="none"
@@ -73,7 +120,7 @@
 								fill="currentcolor"
 							/>
 						</svg>
-					</div>
+					</a>
 					<!-- toggle dark -->
 
 					<ToggleDarkMode />
@@ -82,7 +129,7 @@
 			<!--divider-->
 			<div class="bg-primary-50 dark:bg-primary-contrast-50 h-[2px] w-full"></div>
 			<!--bottom bar-->
-			<nav class="flex h-[62px] w-full items-center justify-center gap-[44px]">
+			<nav class=" h-[62px] w-full items-center justify-center gap-[44px] hidden md:flex">
 				{#each allCategories as category (category.slug)}
 					<a
 						class="hover:text-surface-950 dark:hover:text-primary-500 dark:text-surface-contrast-800 duration-200

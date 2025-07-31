@@ -1,7 +1,8 @@
 <script>
-	import ProductCard from '$lib/components/ProductCard.svelte';
 	import { getCart } from '$lib/components/CartProducts.svelte.js';
 	import { goto } from '$app/navigation';
+	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
+	import SimpleButton from '$lib/components/SimpleButton.svelte';
 
 	let cart = getCart();
 
@@ -21,7 +22,7 @@
 	}
 	function handleClickAddToCart() {
 		cart.addToCart(data.product, amount);
-		goto('/cart')
+		goto('/cart');
 	}
 </script>
 
@@ -88,21 +89,15 @@
 				</div>
 			</div>
 			<!-- add to cart-->
-			<button
-				onclick={handleClickAddToCart}
-				class=" hover:bg-primary bg-darkprimary active:bg-borderdark min-h-[56px] w-full max-w-[143px]
-			  cursor-pointer text-white transition duration-300"
-			>
-				<span>Add to Cart</span>
-			</button>
+			<SimpleButton variant="primary"  onclick={handleClickAddToCart}>Add to Cart</SimpleButton>
 		</div>
 	</div>
 </div>
-<div class="flex w-full flex-col p-[80px]">
-	<div class="text-darkprimary text-2xl">You might also like</div>
-	<div class="mt-[33px] grid grid-cols-4 gap-[30px]">
-		{#each data.relatedProducts.products as product (product.id)}
-			<ProductCard {product} class="col-span-1" />
-		{/each}
-	</div>
+<!-- related products -->
+<div class="flex w-full flex-col bg-surface-400 dark:bg-primary-800 p-[80px] ">
+	<div class="text-surface-900 dark:text-surface-500 text-2xl">You might also like</div>
+	<ProductsGrid
+		customClass="grid-cols-4 gap-4 mt-[33px]"
+		products={data.relatedProducts.products}
+	/>
 </div>

@@ -1,20 +1,25 @@
 <script>
-	import ProductCard from '$lib/components/ProductCard.svelte';
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
-	import { page } from '$app/stores';
-	import { derived } from 'svelte/store';
-	const { data } = $props();
-	const products = derived(page, ($page) => $page.data.category.products || []);
+	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 
-	console.log('products: ', products);
+	const { data } = $props();
+	
+	let products = $derived(data.category.products?.slice(0, 3) || []);
+	let isMore = $derived(data.category.products?.length>3)
+
+	function handleLoadMore() {
+		products =  [...products,...data.category.products?.slice(3) || []]
+		isMore = false
+	}
 </script>
 
-<!-- products -->
-<div class="grid w-full grid-cols-3 gap-4 px-[80px] py-[36px]">
-	{#each $products as product, index (product.id)}
-		<ProductCard {product} class="col-span-1" />
-	{/each}
-	<div class="col-span-3 flex w-full items-center justify-center">
-		<SimpleButton btnText="Load more" btnWidth="w-[176px]" />
+<!-- Products -->
+<div class="bg-surface-50 dark:bg-primary-900 flex flex-col px-[80px] py-[80px]">
+
+	<ProductsGrid customClass="grid-cols-3 gap-6 " {products} />
+	<div class="mt-[35px] flex items-center justify-center">
+		{#if isMore}
+		<SimpleButton btnText="Load more" onclick={handleLoadMore} />
+		{/if}
 	</div>
 </div>

@@ -13,13 +13,18 @@
 				placeholder="your@email.com"
 				name="newsLetterField"
 				type="text"
-				class="h-full w-full bg-[rgba(255,255,255,0.15)] px-[32px] py-[17px] text-sm text-white"
+				class="h-full w-full bg-tertiary-300 dark:bg-primary-900 
+				px-[32px] py-[17px] text-sm text-surface-900 placeholder:text-surface-900 
+				dark:text-surface-300 dark:placeholder:text-surface-300"
 			/>
 		</div>
 		<button
-			class="hover:bg-bordergrey w-3/10 flex h-full cursor-pointer items-center justify-center bg-white duration-200"
+			class=" w-3/10 flex h-full cursor-pointer items-center justify-center
+			 bg-primary-100 hover:bg-secondary-300 active:bg-secondary-500 
+			 dark:bg-primary-300 dark:hover:bg-secondary-500 dark:active:bg-secondary-900
+			 duration-200"
 		>
-			<span class="text-[rgba(42, 37, 75, 1)] text-xl">Sign up</span>
+			<span class="text-surface-950 dark:text-primary-950 text-xl">Sign up</span>
 		</button>
 	</div>
 {:else if version === 2}
@@ -30,7 +35,10 @@
 				placeholder="your@email.com"
 				name="joingTheClubField"
 				type="text"
-				class="text-[rgba(42, 37, 75, 0.20)] bg-lightgrey h-full w-full px-[32px] py-[17px] text-sm"
+				class="text-surface-950 placeholder:text-surface-950
+				dark:text-surface-contrast-950 dark:placeholder:text-surface-contrast-950
+				
+				bg-surface-200 dark:bg-surface-contrast-200 h-full w-full px-[32px] py-[17px] text-sm"
 			/>
 		</div>
 		<button

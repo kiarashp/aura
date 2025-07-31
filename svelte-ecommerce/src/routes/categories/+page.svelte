@@ -1,13 +1,12 @@
 <script>
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import ProductCard from '$lib/components/ProductCard.svelte';
+	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 
 	const { data } = $props();
 	console.log(data);
-	 let categories = data.categories || [];
-	 let products = data.products || [];
-	 
-
+	let categories = data.categories || [];
+	let products = data.products || [];
 
 	let priceRanges = [
 		{ label: 'Under €50', value: 'under-50' },
@@ -23,9 +22,9 @@
 >
 	<span class=" bg-darkprimary absolute inset-0 z-0 opacity-30"></span>
 
-	<p class=" z-10 text-3xl text-white">All products</p>
+	<p class=" text-surface-100 z-10 text-3xl">All products</p>
 </div>
-<div class="flex px-[80px]">
+<div class="bg-surface-200 dark:bg-primary-900 flex px-[80px]">
 	<!-- filters -->
 	<div class="w-1/4 px-2 pt-[48px]">
 		<div class="flex flex-col items-start">
@@ -33,7 +32,7 @@
 			<p class="text-lg">Product Categories</p>
 			<div class="mt-[20px] flex flex-col gap-[13px]">
 				{#each categories as category (category.name)}
-					<label class="text-darkprimary hover:text-primary cursor-pointer select-none text-base">
+					<label class="hover:text-secondary-700 cursor-pointer select-none text-base">
 						<input type="checkbox" name={category.name} id="" />
 						{category.name}
 					</label>
@@ -43,7 +42,7 @@
 			<p class="mt-[48px] text-lg">Price</p>
 			<div class="mt-[20px] flex flex-col gap-[13px]">
 				{#each priceRanges as range (range.label)}
-					<label class="text-darkprimary hover:text-primary cursor-pointer select-none text-base">
+					<label class=" hover:text-secondary-700 cursor-pointer select-none text-base">
 						<input type="checkbox" name={range.value} id="" />
 						{range.label}
 					</label>
@@ -52,11 +51,9 @@
 		</div>
 	</div>
 	<!-- products -->
-	<div class="grid w-3/4 grid-cols-3 gap-4 py-[36px]">
-		{#each products as product, index (product.id)}
-			<ProductCard {product} class="col-span-1" />
-		{/each}
-		<div class="col-span-3 flex w-full items-center justify-center">
+	<div class="w-3/4 py-[36px] mt-[33px]">
+		<ProductsGrid products={data.products} />
+		<div class=" flex w-full items-center justify-center">
 			<SimpleButton btnText="Load more" btnWidth="w-[176px]" />
 		</div>
 	</div>

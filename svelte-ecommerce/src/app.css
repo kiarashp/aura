@@ -2,7 +2,16 @@
 @plugin '@tailwindcss/forms';
 @plugin '@tailwindcss/typography';
 
+
+@import '@skeletonlabs/skeleton';
+@import '@skeletonlabs/skeleton/optional/presets';
+@import '../src/css/skeleton-custom-theme.css';
+@source '../node_modules/@skeletonlabs/skeleton-svelte/dist';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
 @theme {
+
   --color-darkprimary: rgba(42, 37, 75, 1);
   --color-primary: rgba(78, 77, 147, 1);
   --color-lightgrey: rgba(249, 249, 249, 1);
@@ -17,10 +26,10 @@
 
 @layer components {
   .growHover {
-    @apply transition-transform active:scale-95 duration-250 ease-in-out hover:scale-115 translate-z-0 will-change-transform;
+    @apply transition-transform active:scale-95 duration-250 ease-in-out hover:scale-105 translate-z-0 will-change-transform;
   }
   .darkHoverTxt {
-    @apply hover:text-borderdark transition duration-200 ease-in-out active:text-primary;
+    @apply hover:text-secondary-200 dark:hover:text-surface-800 transition duration-200 ease-in-out active:text-primary;
 
   }
 }

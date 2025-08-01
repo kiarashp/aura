@@ -57,11 +57,11 @@
 	<!-- divider -->
 	<div class="bg-primary-700 dark:bg-primary-100 mt-5 h-[1px]"></div>
 	<!-- bottom part -->
-	<div class="flex h-[68px] items-center justify-between">
+	<div class="flex my-4 items-center justify-between">
 		<!--copyright-->
-		<p class="text-surface-200 dark:text-surface-900 text-xs">Copyright 2022 Avion LTD</p>
+		<p class="text-surface-200 dark:text-surface-900 text-xs md:text-base">Copyright 2022 Avion LTD</p>
 		<!-- social icons -->
-		<div class="text-surface-300 dark:text-primary-800 flex items-center gap-[24px]">
+		<div class="text-surface-300 dark:text-primary-800 flex items-center gap-2 md:gap-6">
 			<!-- facebook-->
 			<a href="/" class="growHover flex h-[24px] w-[24px]" aria-label="Facebook">
 				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

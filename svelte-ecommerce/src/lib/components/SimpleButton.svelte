@@ -24,7 +24,7 @@
 	}: Props = $props();
 
 	// Base classes that all buttons share
-	const baseClasses = 'cursor-pointer transition duration-300 text-base md:text-lg';
+	const baseClasses = 'cursor-pointer transition duration-300 text-base xl:text-lg';
 
 	// Variant-specific classes
 	const getVariantClasses = (variant: string) => {

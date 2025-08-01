@@ -9,8 +9,8 @@
 
 {#if version === 1}
 	<!-- version 1 footer -->
-	<div class="grid w-full grid-cols-10 gap-y-6 md:gap-y-0">
-		<div class="col-span-10 min-h-[56px] md:col-span-7">
+	<div class="grid w-full grid-cols-10 gap-y-2 md:gap-y-0">
+		<div class="col-span-10 h-[56px] md:col-span-7">
 			<input
 				placeholder="your@email.com"
 				name="newsLetterField"
@@ -30,7 +30,7 @@
 {:else if version === 2}
 	<!-- version 2 -->
 	<div class="grid h-full w-full grid-cols-10 gap-6 md:gap-0">
-		<div class="col-span-10 min-h-[56px] md:col-span-7">
+		<div class="col-span-10 h-[56px] md:col-span-7">
 			<input
 				placeholder="your@email.com"
 				name="joingTheClubField"

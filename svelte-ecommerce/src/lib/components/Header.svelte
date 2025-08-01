@@ -36,9 +36,9 @@
 <div class="h-[1px] w-full bg-transparent" bind:this={sentinel}></div>
 <div class="sticky top-0 z-50 w-full" data-sticky>
 	<div
-		class="sticky top-0 z-50 w-full transition-all duration-200 {isScrolled
-			? 'bg-surface-100/95 dark:bg-surface-950/95 border-surface-200/50 dark:border-surface-800/50 border-b shadow-md backdrop-blur-md'
-			: 'bg-surface-100 dark:bg-surface-950'} flex-col defaultPadding"
+		class="sticky top-0 z-50 w-full transition-all duration-200 bg-surface-100 dark:bg-surface-950 {isScrolled
+			? ' border-surface-200/50 dark:border-surface-800/50 border-b shadow-md'
+			: ''} flex-col defaultPadding"
 	>
 		<div class="bg-surface-100 dark:bg-surface-950 w-full flex-col">
 			<!-- Mobile nav -->

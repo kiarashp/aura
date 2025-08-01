@@ -14,9 +14,8 @@
 </script>
 
 <!-- Products -->
-<div class="bg-surface-50 dark:bg-primary-900 flex flex-col px-[80px] py-[80px]">
-
-	<ProductsGrid customClass="grid-cols-3 gap-6 " {products} />
+<div class="bg-surface-50 dark:bg-primary-900 flex flex-col defaultPadding py-[80px]">
+	<ProductsGrid customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6 " {products} />
 	<div class="mt-[35px] flex items-center justify-center">
 		{#if isMore}
 		<SimpleButton btnText="Load more" onclick={handleLoadMore} />

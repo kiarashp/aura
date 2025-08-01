@@ -8,57 +8,63 @@
 	let { categories }: Props = $props();
 </script>
 
-<footer class="bg-primary-900 dark:bg-tertiary-600 w-full px-[83px]">
+<footer class="bg-primary-900 dark:bg-tertiary-600 defaultPadding w-full">
 	<!--top part-->
-	<div class="flex h-[312px] pt-[58px]">
-		<!-- left side -->
-		<div class="flex w-1/2">
-			<!--Menu col-->
-			<div class="flex w-1/3 flex-col gap-[12px] text-surface-200 dark:text-surface-900">
-				<p class="text-lg">Menu</p>
-				<a href="/" class="darkHoverTxt text-base">New arrivals</a>
-				<a href="/" class="darkHoverTxt text-base">Best sellers</a>
-				<a href="/" class="darkHoverTxt text-base">Recently viewed</a>
-				<a href="/" class="darkHoverTxt text-base">Popular this week</a>
-				<a href="/products" class="darkHoverTxt text-base">All products</a>
-			</div>
-			<!--Categories col-->
-			<div class="flex w-1/3 flex-col gap-[12px] text-surface-200 dark:text-surface-900">
-				<p class="text-lg">Categories</p>
-				{#each categories as category (category.id)}
-					<a class="darkHoverTxt text-base" href="/categories{category.slug}">{category.name}</a>
-				{/each}
-			</div>
-			<!--Our company col-->
-			<div class="flex w-1/3 flex-col gap-[12px] text-surface-200 dark:text-surface-900">
-				<p class="text-lg">Our company</p>
-				<a href="/about" class="darkHoverTxt text-base">About us</a>
-				<a href="/" class="darkHoverTxt text-base">Vacancies</a>
-				<a href="/" class="darkHoverTxt text-base">Contact us</a>
-				<a href="/" class="darkHoverTxt text-base">Privacy</a>
-				<a href="/" class="darkHoverTxt text-base">Returns policy</a>
-			</div>
+	<div class="grid grid-cols-12 gap-y-8 pt-[58px] sm:gap-x-3">
+		<!--Menu col-->
+		<div
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+		>
+			<p class="text-2xl">Menu</p>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">New arrivals</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Best sellers</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Recently viewed</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Popular this week</a>
+			<a href="/products" class="darkHoverTxt text-xl sm:text-lg">All products</a>
 		</div>
-		<!-- right side -->
-		<div class="flex w-1/2 flex-col gap-[16px]">
-			<p class="text-lg text-surface-200 dark:text-surface-900">Join our mailing list</p>
-			<!-- news letter -->
-			<div class="h-[56px]">
+		<!--Categories col-->
+		<div
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+		>
+			<p class="text-2xl">Categories</p>
+			{#each categories as category (category.id)}
+				<a class="darkHoverTxt text-xl sm:text-lg" href="/categories{category.slug}"
+					>{category.name}</a
+				>
+			{/each}
+		</div>
+		<!--Our company col-->
+		<div
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+		>
+			<p class="text-2xl">Our company</p>
+			<a href="/about" class="darkHoverTxt text-xl sm:text-lg">About us</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Vacancies</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Contact us</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Privacy</a>
+			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Returns policy</a>
+		</div>
+		<!-- mail form -->
+		<div class="col-span-12  flex flex-col gap-[16px] sm:col-span-6 lg:col-span-3  items-center sm:items-start">
+			<p class="text-surface-200 dark:text-surface-900 text-center sm:text-left text-2xl">
+				Join our mailing list
+			</p>
+			<div class="min-h-[56px] w-full max-w-[300px]">
 				<NewsLetter version={1} />
 			</div>
 		</div>
 	</div>
 	<!-- divider -->
-	<div class="h-[1px] bg-primary-700 dark:bg-primary-100"></div>
+	<div class="bg-primary-700 dark:bg-primary-100 mt-5 h-[1px]"></div>
 	<!-- bottom part -->
 	<div class="flex h-[68px] items-center justify-between">
 		<!--copyright-->
-		<p class="text-xs text-surface-200 dark:text-surface-900">Copyright 2022 Avion LTD</p>
+		<p class="text-surface-200 dark:text-surface-900 text-xs">Copyright 2022 Avion LTD</p>
 		<!-- social icons -->
-		<div class="flex items-center gap-[24px] text-surface-300 dark:text-primary-800">
+		<div class="text-surface-300 dark:text-primary-800 flex items-center gap-[24px]">
 			<!-- facebook-->
-			<a href="/" class="growHover flex h-[24px] w-[24px]" aria-label="Facebook" >
-				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" >
+			<a href="/" class="growHover flex h-[24px] w-[24px]" aria-label="Facebook">
+				<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 					<rect fill="currentcolor" style="mix-blend-mode:multiply" />
 					<path
 						d="M20.0025 3H3.9975C3.73355 3.00196 3.48097 3.10769 3.29433 3.29433C3.10769 3.48097 3.00196 3.73355 3 3.9975V20.0025C3.00196 20.2664 3.10769 20.519 3.29433 20.7057C3.48097 20.8923 3.73355 20.998 3.9975 21H12.615V14.04H10.275V11.3175H12.615V9.315C12.615 6.99 14.0325 5.7225 16.1175 5.7225C16.815 5.7225 17.5125 5.7225 18.21 5.8275V8.25H16.7775C15.645 8.25 15.4275 8.79 15.4275 9.5775V11.31H18.1275L17.775 14.0325H15.4275V21H20.0025C20.2664 20.998 20.519 20.8923 20.7057 20.7057C20.8923 20.519 20.998 20.2664 21 20.0025V3.9975C20.998 3.73355 20.8923 3.48097 20.7057 3.29433C20.519 3.10769 20.2664 3.00196 20.0025 3Z"

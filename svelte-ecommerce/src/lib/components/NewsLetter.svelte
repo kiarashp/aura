@@ -1,36 +1,36 @@
 <script lang="ts">
+	import SimpleButton from './SimpleButton.svelte';
+
 	interface props {
-		version : number
+		version: number;
 	}
-	let { version } : props = $props();
+	let { version }: props = $props();
 </script>
 
 {#if version === 1}
 	<!-- version 1 footer -->
-	<div class="flex w-full h-full">
-		<div class="w-7/10 h-full">
+	<div class="grid w-full grid-cols-10 gap-y-6 md:gap-y-0">
+		<div class="col-span-10 min-h-[56px] md:col-span-7">
 			<input
 				placeholder="your@email.com"
 				name="newsLetterField"
 				type="text"
-				class="h-full w-full bg-tertiary-300 dark:bg-primary-900 
-				px-[32px] py-[17px] text-sm text-surface-900 placeholder:text-surface-900 
-				dark:text-surface-300 dark:placeholder:text-surface-300"
+				class="bg-tertiary-300 dark:bg-primary-900 text-surface-900 placeholder:text-surface-900
+				dark:text-surface-300 dark:placeholder:text-surface-300 h-full w-full text-sm
+				md:px-[32px] md:py-[17px]"
 			/>
 		</div>
-		<button
-			class=" w-3/10 flex h-full cursor-pointer items-center justify-center
-			 bg-primary-100 hover:bg-secondary-300 active:bg-secondary-500 
-			 dark:bg-primary-300 dark:hover:bg-secondary-500 dark:active:bg-secondary-900
-			 duration-200"
-		>
-			<span class="text-surface-950 dark:text-primary-950 text-xl">Sign up</span>
-		</button>
+		<SimpleButton
+			variant="ghost"
+			btnText="Sign up"
+			btnWidth="col-span-10 md:col-span-3"
+			rounded="rounded-none"
+		/>
 	</div>
 {:else if version === 2}
 	<!-- version 2 -->
-	<div class="flex w-full h-full">
-		<div class="w-7/10 h-full">
+	<div class="grid h-full w-full grid-cols-10 gap-6 md:gap-0">
+		<div class="col-span-10 min-h-[56px] md:col-span-7">
 			<input
 				placeholder="your@email.com"
 				name="joingTheClubField"
@@ -38,13 +38,14 @@
 				class="text-surface-950 placeholder:text-surface-950
 				dark:text-surface-contrast-950 dark:placeholder:text-surface-contrast-950
 				
-				bg-surface-200 dark:bg-surface-contrast-200 h-full w-full px-[32px] py-[17px] text-sm"
+				bg-surface-200 dark:bg-surface-contrast-200 h-full w-full text-sm md:px-[32px] md:py-[17px]"
 			/>
 		</div>
-		<button
-			class="hover:bg-primary w-3/10 bg-darkprimary flex h-full cursor-pointer items-center justify-center duration-200"
-		>
-			<span class="text-base text-white">Sign up</span>
-		</button>
+		<SimpleButton
+			variant="primary"
+			btnText="Sign up"
+			btnWidth="col-span-10 md:col-span-3"
+			rounded="rounded-none"
+		/>
 	</div>
 {/if}

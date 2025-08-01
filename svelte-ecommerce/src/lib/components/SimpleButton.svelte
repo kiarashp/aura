@@ -9,6 +9,7 @@
 		children?: Snippet;
 		customClasses?: string;
 		variant?: string;
+		rounded?: string;
 	}
 
 	const {
@@ -17,12 +18,13 @@
 		btnHeight = 'min-h-[56px]',
 		customClasses = '',
 		variant = 'secondary',
+		rounded= "rounded-sm",
 		children,
 		...restProps
 	}: Props = $props();
 
 	// Base classes that all buttons share
-	const baseClasses = 'cursor-pointer transition duration-300 rounded-sm';
+	const baseClasses = 'cursor-pointer transition duration-300 text-base md:text-lg';
 
 	// Variant-specific classes
 	const getVariantClasses = (variant: string) => {
@@ -66,7 +68,8 @@
 		getVariantClasses(variant),
 		btnWidth,
 		btnHeight,
-		customClasses
+		customClasses,
+		rounded
 	]
 		.filter(Boolean)
 		.join(' ');

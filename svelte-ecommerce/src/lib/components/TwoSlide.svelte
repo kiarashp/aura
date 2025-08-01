@@ -25,7 +25,7 @@
 	</div>
 	<!-- right side -->
 	<div class="col-span-12 lg:col-span-5 flex items-end justify-center bg-[#83A9AC]">
-		<div class="w-[70%]">
+		<div class="w-[70%] py-5 lg:p-0">
 			<img src="/general/simple-chair-5.png" alt="" />
 		</div>
 	</div>

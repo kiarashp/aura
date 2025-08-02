@@ -23,31 +23,35 @@
 	};
 </script>
 
-<div class="bg-surface-50 dark:bg-primary-900 w-full px-[188px] pb-[48px] pt-[64px]">
-	<div class="text-primary-800 dark:text-primary-200 text-4xl">Your shopping cart</div>
-	<div class="mt-[48px] grid grid-cols-10">
-		<p class=" col-span-6">Product</p>
-		<p class="col-span-2 text-center">Quantity</p>
-		<p class="col-span-2 text-right">Total</p>
-		<div class="bg-bordergrey col-span-10 mt-[12px] h-[2px]"></div>
+<div
+	class="bg-surface-50 dark:bg-primary-900 w-full px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]"
+>
+	<div class="text-primary-800 dark:text-primary-200 bigHeader">Your shopping cart</div>
+	<div class="mt-[48px] grid grid-cols-12 gap-x-2 md:gap-x-4">
+		<p class=" subheader col-span-6">Product</p>
+		<p class="subheader col-span-3 text-center">Quantity</p>
+		<p class="subheader col-span-3 text-right">Total</p>
+		<div class="bg-surface-600 col-span-12 mt-[12px] h-[2px]"></div>
 
 		{#each cart.cartProducts as cartItem (cartItem.product.id)}
-			<div class="col-span-10 mt-[20px]"></div>
-			<div class="col-span-1 aspect-[134/109]">
+			<div class="col-span-12 mt-[20px]"></div>
+			<div class="col-span-2 ">
 				<img src={cartItem.product.imageUrl} alt="product looks" />
 			</div>
-			<div class="col-span-5 flex flex-col gap-[8px] py-[12px] pl-[24px] pr-[120px]">
-				<p class="text-2xl">{cartItem.product.name}</p>
-				{#if cartItem.product.description}
-					{cartItem.product.description.length > 50
-						? cartItem.product.description.substring(0, 50) + '...'
-						: cartItem.product.description}
-				{:else}
-					No description available.
-				{/if}
-				<p class="text-base">€{cartItem.product.price}</p>
+			<div class="col-span-4 flex flex-col gap-[8px]">
+				<p class="text-sm md:text-base lg:text-xl">{cartItem.product.name}</p>
+				<p class="text-sm hidden md:block">
+					{#if cartItem.product.description}
+						{cartItem.product.description.length > 50
+							? cartItem.product.description.substring(0, 50) + '...'
+							: cartItem.product.description}
+					{:else}
+						No description available.
+					{/if}
+				</p>
+				<p class="smalltext">€{cartItem.product.price}</p>
 			</div>
-			<div class="col-span-2 flex items-center justify-center gap-2 pt-[12px]">
+			<div class="col-span-3 flex items-end justify-center gap-2">
 				<div class="bg-surface-300 dark:bg-primary-100 flex w-full max-w-[122px] rounded-sm">
 					<SimpleButton
 						customClasses="group/minus flex items-center justify-center"
@@ -66,7 +70,9 @@
 							/></svg
 						></SimpleButton
 					>
-					<div class="flex w-1/3 items-center justify-center">
+					<div
+						class="text-surface-950 dark:text-surface-900 flex w-1/3 items-center justify-center"
+					>
 						<span>{cartItem.quantity}</span>
 					</div>
 					<SimpleButton
@@ -88,20 +94,20 @@
 					>
 				</div>
 			</div>
-			<div class="col-span-2 pt-[12px] text-right">
+			<div class="col-span-3 flex items-end justify-end text-sm md:text-base">
 				€{(cartItem.quantity * cartItem.product.price).toFixed(2)}
 			</div>
 		{/each}
-		<div class="bg-bordergrey col-span-10 mt-[32px] h-[2px]"></div>
+		<div class="bg-bordergrey col-span-12 mt-[32px] h-[2px]"></div>
 		<!-- subtotal-->
-		<div class="col-span-10 mt-[31px] flex justify-end gap-[16px]">
+		<div class="col-span-12 mt-[31px] flex justify-end gap-[16px]">
 			<p class="text-primary-500 dark:text-primary-100 text-xl">Subtotal</p>
 			<p class="text-lg">€{total}</p>
 		</div>
-		<p class="text-primary-500 dark:text-primary-100 col-span-10 mt-[12px] text-right">
+		<p class="text-primary-500 dark:text-primary-100 col-span-12 mt-[12px] text-right">
 			Taxes and shipping are calculated at checkout
 		</p>
-		<div class="col-span-10 mt-[32px] flex w-full justify-end">
+		<div class="col-span-12 mt-[32px] flex w-full justify-end">
 			<SimpleButton
 				variant="primary"
 				onclick={handleCheckout}

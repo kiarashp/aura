@@ -64,7 +64,7 @@
 				<button
 					onclick={decreaseAmount}
 					aria-label="increase amount"
-					class="hover:bg-surface-600 dark:hover:bg-tertiary-800 group/minus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
+					class="touch-manipulation hover:bg-surface-600 dark:hover:bg-tertiary-800 group/minus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
 				>
 					<svg
 						class="group-active/minus:fill-surface-200 fill-primary-900 dark:fill-primary-contrast-900 dark:group-active/plus:fill-surface-200 w-[15px] duration-300"
@@ -80,7 +80,7 @@
 				<button
 					onclick={increaseAmount}
 					aria-label="increase amount"
-					class="hover:bg-surface-600 dark:hover:bg-tertiary-800 group/plus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
+					class="touch-manipulation hover:bg-surface-600 dark:hover:bg-tertiary-800 group/plus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
 				>
 					<!-- <Icon color="rgba(202, 198, 218, 1)" icon="streamline:add-1-solid" class="w-[11px]" /> -->
 					<svg
@@ -97,7 +97,7 @@
 	</div>
 </div>
 <!-- related products -->
-<div class="bg-surface-400 dark:bg-primary-800 flex w-full flex-col p-[80px]">
+<div class="bg-surface-400 dark:bg-primary-800 flex w-full flex-col defaultPadding py-7">
 	<div class="text-surface-900 dark:text-surface-500 header">You might also like</div>
 	<ProductsGrid
 		customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-[33px]"

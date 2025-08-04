@@ -27,7 +27,7 @@
 </script>
 
 <div class="bg-surface-50 dark:bg-primary-900 grid grid-cols-2 lg:pr-[80px]">
-	<div class="col-span-2 lg:col-span-1">
+	<div class="col-span-2 lg:col-span-1 aspect-square">
 		<img src={data.product.imageUrl} alt={data.product.name} class="h-full w-full object-cover" />
 	</div>
 	<div

@@ -36,9 +36,9 @@
 <div class="h-[1px] w-full bg-transparent" bind:this={sentinel}></div>
 <div class="sticky top-0 z-50 w-full" data-sticky>
 	<div
-		class="sticky top-0 z-50 w-full transition-all duration-200 bg-surface-100 dark:bg-surface-950 {isScrolled
+		class="bg-surface-100 dark:bg-surface-950 sticky top-0 z-50 w-full transition-all duration-200 {isScrolled
 			? ' border-surface-200/50 dark:border-surface-800/50 border-b shadow-md'
-			: ''} flex-col defaultPadding"
+			: ''} defaultPadding flex-col"
 	>
 		<div class="bg-surface-100 dark:bg-surface-950 w-full flex-col">
 			<!-- Mobile nav -->
@@ -59,6 +59,12 @@
 						<a href="/about" onclick={() => (isMobileMenuOpen = false)} class="py-2 text-lg"
 							>About us</a
 						>
+						<a href="/profile" onclick={() => (isMobileMenuOpen = false)} class="py-2 text-lg"
+							>My profile</a
+						>
+						<a href="/cart" onclick={() => (isMobileMenuOpen = false)} class="py-2 text-lg"
+							>My cart</a
+						>
 					</div>
 				</nav>
 			{/if}
@@ -66,19 +72,19 @@
 			<!-- top bar -->
 			<div class=" grid h-[70px] w-full grid-cols-12">
 				<!-- logo -->
-				 
+
 				<a
 					href="/"
-					class="growHover text-primary-900 dark:text-surface-50 
-					col-span-6  col-start-1 md:col-end-13 md:text-center
-					  row-start-1 justify-self-start md:justify-self-center self-center text-3xl font-medium"
+					class="growHover text-primary-900 dark:text-surface-50
+					col-span-6 col-start-1 row-start-1 self-center
+					  justify-self-start text-3xl font-medium md:col-end-13 md:justify-self-center md:text-center"
 					>Avion</a
 				>
 
 				<!--cart and profile -->
 				<div
-					class="col-span-6 md:col-start-9 md:col-end-13 col-start-7 row-start-1 flex flex-row gap-3 self-center 
-					justify-self-end pe-2"
+					class="col-span-6 col-start-7 row-start-1 flex flex-row gap-3 self-center justify-self-end pe-2
+					md:col-start-9 md:col-end-13"
 				>
 					<!-- Mobile menu button -->
 					<button
@@ -104,7 +110,11 @@
 						<CartButton />
 					</a>
 					<!--profile-->
-					<a href="/profile" class="growHover h-[22px] w-[22px] hidden md:block" aria-label="profile">
+					<a
+						href="/profile"
+						class="growHover hidden h-[22px] w-[22px] md:block"
+						aria-label="profile"
+					>
 						<svg
 							viewBox="0 0 16 16"
 							fill="none"
@@ -130,7 +140,7 @@
 			<!--divider-->
 			<div class="bg-primary-50 dark:bg-primary-contrast-50 h-[2px] w-full"></div>
 			<!--bottom bar-->
-			<nav class=" h-[62px] w-full items-center justify-center gap-[44px] hidden md:flex">
+			<nav class=" hidden h-[62px] w-full items-center justify-center gap-[44px] md:flex">
 				{#each allCategories as category (category.slug)}
 					<a
 						class="hover:text-surface-950 dark:hover:text-primary-500 dark:text-surface-contrast-800 duration-200

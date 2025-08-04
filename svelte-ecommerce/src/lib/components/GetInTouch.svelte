@@ -1,6 +1,7 @@
 <script lang="ts">
 import SimpleButton from "./SimpleButton.svelte";
 </script>
+
 <!-- get in touch -->
 <div class="flex flex-col-reverse lg:flex-row lg:min-h-[603px] lg:pl-[80px]">
 	<!-- left -->

@@ -5,47 +5,68 @@
 		version: number;
 	}
 	let { version }: props = $props();
+	let isSubmit = $state(false);
+	let emailInput = $state('');
+
+	function submitHandler(e: Event) {
+		e.preventDefault();
+		console.log(emailInput);
+		isSubmit = !isSubmit;
+	}
 </script>
 
 {#if version === 1}
-	<!-- version 1 footer -->
+	<!-- version 1 newsletter -->
 	<div class="grid w-full grid-cols-10 gap-y-2 md:gap-y-0">
-		<div class="col-span-10 h-[56px] md:col-span-7">
-			<input
-				placeholder="your@email.com"
-				name="newsLetterField"
-				type="text"
-				class="bg-tertiary-300 dark:bg-primary-900 text-surface-900 placeholder:text-surface-900
+		{#if isSubmit}
+			<div class="col-span-10  text-surface-500 dark:text-surface-900">Subscribed! We'll be in touch soon with exciting news</div>
+		{:else}
+			<form id="newsletter1" class="col-span-10 h-[56px] md:col-span-7" onsubmit={submitHandler}>
+				<input
+					placeholder="your@email.com"
+					name="newsLetterField"
+					type="text"
+					class="bg-tertiary-300 dark:bg-primary-900 text-surface-900 placeholder:text-surface-900
 				dark:text-surface-300 dark:placeholder:text-surface-300 h-full w-full text-sm
 				md:px-[32px] md:py-[17px]"
+					bind:value={emailInput}
+				/>
+			</form>
+			<SimpleButton
+				variant="ghost"
+				btnText="Sign up"
+				btnWidth="col-span-10 md:col-span-3"
+				rounded="rounded-none"
+				type="submit"
+				form="newsletter1"
 			/>
-		</div>
-		<SimpleButton
-			variant="ghost"
-			btnText="Sign up"
-			btnWidth="col-span-10 md:col-span-3"
-			rounded="rounded-none"
-		/>
+		{/if}
 	</div>
 {:else if version === 2}
-	<!-- version 2 -->
+	<!-- version 2 newsletter -->
 	<div class="grid h-full w-full grid-cols-10 gap-6 md:gap-0">
-		<div class="col-span-10 h-[56px] md:col-span-7">
-			<input
-				placeholder="your@email.com"
-				name="joingTheClubField"
-				type="text"
-				class="text-surface-950 placeholder:text-surface-950
+		{#if isSubmit}
+			<div class="col-span-10">Subscribed! We'll be in touch soon with exciting news</div>
+		{:else}
+			<form id="newsletter2" class="col-span-10 h-[56px] md:col-span-7" onsubmit={submitHandler}>
+				<input
+					placeholder="your@email.com"
+					name="joingTheClubField"
+					type="text"
+					class="text-surface-950 placeholder:text-surface-950
 				dark:text-surface-contrast-950 dark:placeholder:text-surface-contrast-950
-				
 				bg-surface-200 dark:bg-surface-contrast-200 h-full w-full text-sm md:px-[32px] md:py-[17px]"
+					bind:value={emailInput}
+				/>
+			</form>
+			<SimpleButton
+				variant="primary"
+				btnText="Sign up"
+				btnWidth="col-span-10 md:col-span-3"
+				rounded="rounded-none"
+				type="submit"
+				form="newsletter2"
 			/>
-		</div>
-		<SimpleButton
-			variant="primary"
-			btnText="Sign up"
-			btnWidth="col-span-10 md:col-span-3"
-			rounded="rounded-none"
-		/>
+		{/if}
 	</div>
 {/if}

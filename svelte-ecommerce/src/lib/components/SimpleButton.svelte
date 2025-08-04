@@ -36,7 +36,7 @@
 			case 'outline':
 				return 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white active:bg-primary-600 dark:border-primary-400 dark:text-primary-400';
 			case 'ghost':
-				return 'text-primary-500 bg-surface-300  hover:bg-primary-100 active:bg-primary-400 dark:text-primary-400 dark:bg-primary-100 dark:hover:bg-primary-200 dark:active:bg-primary-400';
+				return 'text-primary-500 bg-surface-300  hover:bg-primary-100 active:bg-primary-400 dark:text-primary-400 dark:bg-primary-100 dark:hover:bg-primary-200 dark:active:bg-primary-400 dark:active:text-white';
 			case 'success':
 				return 'bg-success-500 hover:bg-success-700 active:bg-success-400 dark:bg-success-600 dark:hover:bg-success-800 dark:active:bg-success-500 text-success-contrast-500';
 			case 'error':

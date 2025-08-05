@@ -6,7 +6,10 @@ const prisma = new PrismaClient();
 export const GET = async () => {
     try {
         // Fetching products from the database
-        const products = await prisma.product.findMany();
+        const products = await prisma.product.findMany({
+			include: {
+				category: true // This will include the full category object
+			}});
 
         return new Response(JSON.stringify(products), {
             status: 200,

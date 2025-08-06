@@ -1,4 +1,5 @@
 <script>
+	import { goto } from '$app/navigation';
 	onMount(() => {
 		console.log('About page loaded');
 	});
@@ -7,35 +8,41 @@
 </script>
 
 <div
-	class="flex min-h-[246px] w-full items-center justify-center bg-surface-300 dark:bg-primary-900 defaultPadding py-[67px] bigHeader"
+	class="bg-surface-300 dark:bg-primary-900 defaultPadding bigHeader flex min-h-[246px] w-full items-center justify-center py-[67px]"
 >
 	A brand built on the love of craftmanship,<br />
 	quality and outstanding customer service
 </div>
 
 <!-- get in touch first -->
-<div class="flex flex-col-reverse lg:flex-row lg:min-h-[603px]">
+<div class="flex flex-col-reverse lg:min-h-[603px] lg:flex-row">
 	<!-- left -->
-	<div class="mt-[72px] flex w-full lg:w-1/2 flex-col justify-between  px-[25px] md:px-[80px]">
+	<div class="mt-[72px] flex w-full flex-col justify-between px-[25px] md:px-[80px] lg:w-1/2">
 		<div class="flex flex-col lg:pr-[100px]">
 			<p class="text-primary-950 dark:text-surface-600 bigHeader">
 				From a studio in London to a global brand with over 400 outlets
 			</p>
-			<p class="mt-[35px] subheader text-surface-800 dark:text-tertiary-500">
+			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
 				When we started Avion, the idea was simple. Make high quality furniture affordable and
 				available for the mass market.
 			</p>
-			<p class="mt-[35px] subheader text-surface-800 dark:text-tertiary-500">
+			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
 				Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so
 				our Chelsea boutique become the hotbed for the London interior design community.
 			</p>
 		</div>
 		<div class="my-[64px] w-[150px]">
-			<SimpleButton btnText="Get in touch" btnWidth="w-full" />
+			<SimpleButton
+				btnText="Learn More"
+				btnWidth="w-full"
+				onclick={() => {
+					goto('/about');
+				}}
+			/>
 		</div>
 	</div>
 	<!-- right -->
-	<div class="flex w-full lg:w-1/2 flex-col">
+	<div class="flex w-full flex-col lg:w-1/2">
 		<img
 			src="/general/decorative-3.jpg"
 			alt="decorative elements"
@@ -45,9 +52,9 @@
 </div>
 
 <!-- get in touch second -->
-<div class="flex flex-col lg:flex-row lg:min-h-[603px]">
+<div class="flex flex-col lg:min-h-[603px] lg:flex-row">
 	<!-- left -->
-	<div class="flex w-full lg:w-1/2 flex-col">
+	<div class="flex w-full flex-col lg:w-1/2">
 		<img
 			src="/general/decorative-2.jpg"
 			alt="decorative elements"
@@ -55,23 +62,29 @@
 		/>
 	</div>
 	<!-- right -->
-	<div class="mt-[72px] flex w-full lg:w-1/2 flex-col justify-between  px-[25px] md:px-[80px] ">
+	<div class="mt-[72px] flex w-full flex-col justify-between px-[25px] md:px-[80px] lg:w-1/2">
 		<div class="flex flex-col">
-			<p class="text-darkprimary text-4xl">
+			<p class="text-primary-950 dark:text-surface-600 bigHeader">
 				Our service isn’t just personal, it’s actually hyper personally exquisite
 			</p>
 
-			<p class="mt-[35px] text-2xl text-[rgba(80,89,119,1)]">
+			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
 				When we started Avion, the idea was simple. Make high quality furniture affordable and
 				available for the mass market.
 			</p>
-			<p class="mt-[35px] text-2xl text-[rgba(80,89,119,1)]">
+			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
 				Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so
 				our Chelsea boutique become the hotbed for the London interior design community.
 			</p>
 		</div>
 		<div class="my-[64px] w-[150px]">
-			<SimpleButton btnText="Get in touch" btnWidth="w-full" />
+			<SimpleButton
+				btnText="Learn More"
+				btnWidth="w-full"
+				onclick={() => {
+					goto('/about');
+				}}
+			/>
 		</div>
 	</div>
 </div>

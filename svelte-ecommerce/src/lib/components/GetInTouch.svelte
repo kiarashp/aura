@@ -6,7 +6,7 @@ import SimpleButton from "./SimpleButton.svelte";
 <div class="flex flex-col-reverse lg:flex-row lg:min-h-[603px] lg:pl-[80px]">
 	<!-- left -->
 	<div class="mt-[72px] flex w-full lg:w-1/2 flex-col justify-between  px-[25px] md:px-[80px] lg:px-0 ">
-		<div class="flex flex-col lg:pr-[100px]">
+		<div class="flex flex-col lg:pr-[100px] pb-3">
 			<p class="text-primary-950 dark:text-surface-600 bigHeader">
 				From a studio in London to a global brand with over 400 outlets
 			</p>
@@ -18,9 +18,6 @@ import SimpleButton from "./SimpleButton.svelte";
 				Handmade, and lovingly crafted furniture and homeware is what we live, breathe and design so
 				our Chelsea boutique become the hotbed for the London interior design community.
 			</p>
-		</div>
-		<div class="my-[64px] w-[150px] ">
-			<SimpleButton btnText="Get in touch" btnWidth="w-full" />
 		</div>
 	</div>
 	<!-- right -->

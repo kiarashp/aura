@@ -13,18 +13,16 @@
 	<div class="grid grid-cols-12 gap-y-8 pt-[58px] sm:gap-x-3">
 		<!--Menu col-->
 		<div
-			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col items-center gap-[12px] sm:col-span-6 sm:items-start lg:col-span-3"
 		>
 			<p class="text-2xl">Menu</p>
+			<a href="/about" class="darkHoverTxt text-xl sm:text-lg">About us</a>
 			<a href="/" class="darkHoverTxt text-xl sm:text-lg">New arrivals</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Best sellers</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Recently viewed</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Popular this week</a>
 			<a href="/products" class="darkHoverTxt text-xl sm:text-lg">All products</a>
 		</div>
 		<!--Categories col-->
 		<div
-			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col items-center gap-[12px] sm:col-span-6 sm:items-start lg:col-span-3"
 		>
 			<p class="text-2xl">Categories</p>
 			{#each categories as category (category.id)}
@@ -35,18 +33,17 @@
 		</div>
 		<!--Our company col-->
 		<div
-			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col gap-[12px] sm:col-span-6 lg:col-span-3 items-center sm:items-start"
+			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col items-center gap-[12px] sm:col-span-6 sm:items-start lg:col-span-3"
 		>
-			<p class="text-2xl">Our company</p>
-			<a href="/about" class="darkHoverTxt text-xl sm:text-lg">About us</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Vacancies</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Contact us</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Privacy</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">Returns policy</a>
+			<p class="text-2xl">My Account</p>
+			<a href="/cart" class="darkHoverTxt text-xl sm:text-lg">My Cart </a>
+			<a href="/profile" class="darkHoverTxt text-xl sm:text-lg">My Dashboard</a>
 		</div>
 		<!-- mail form -->
-		<div class="col-span-12  flex flex-col gap-[16px] sm:col-span-6 lg:col-span-3  items-center sm:items-start">
-			<p class="text-surface-200 dark:text-surface-900 text-center sm:text-left text-2xl">
+		<div
+			class="col-span-12 flex flex-col items-center gap-[16px] sm:col-span-6 sm:items-start lg:col-span-3"
+		>
+			<p class="text-surface-200 dark:text-surface-900 text-center text-2xl sm:text-left">
 				Join our mailing list
 			</p>
 			<div class="min-h-[56px] w-full max-w-[300px]">
@@ -57,9 +54,11 @@
 	<!-- divider -->
 	<div class="bg-primary-700 dark:bg-primary-100 mt-5 h-[1px]"></div>
 	<!-- bottom part -->
-	<div class="flex my-4 items-center justify-between">
+	<div class="my-4 flex items-center justify-between">
 		<!--copyright-->
-		<p class="text-surface-200 dark:text-surface-900 text-xs md:text-base">Copyright 2022 Avion LTD</p>
+		<p class="text-surface-200 dark:text-surface-900 text-xs md:text-base">
+			Copyright 2022 Avion LTD
+		</p>
 		<!-- social icons -->
 		<div class="text-surface-300 dark:text-primary-800 flex items-center gap-2 md:gap-6">
 			<!-- facebook-->

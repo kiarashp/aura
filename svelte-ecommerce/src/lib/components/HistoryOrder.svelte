@@ -8,7 +8,7 @@
 	];
 </script>
 
-<div class="flex w-full flex-col md:w-3/4 overflow-x-scroll">
+<div class="flex w-full flex-col md:w-3/4 overflow-x-scroll md:overflow-x-auto">
 	<h1 class="text-primary-900 dark:text-primary-50 mb-4 text-2xl font-semibold">Track Orders</h1>
 	<div class="table-wrap">
 		<table class="table caption-bottom">

@@ -13,9 +13,7 @@
 	>
 		<!--top left text box-->
 		<div class="flex flex-col gap-[41px] lg:pr-[89px]">
-			<p class="text-surface-100 text-xl lg:text-4xl">
-				The furniture brand for the future, with timeless designs
-			</p>
+			<p class="text-surface-100 text-xl lg:text-4xl">Timeless Design for a Sustainable Future</p>
 
 			<SimpleButton
 				variant="primary"
@@ -27,9 +25,9 @@
 		</div>
 		<!-- bottom left text box -->
 		<p class="text-surface-100 mt-8 text-base lg:mt-0 lg:text-lg">
-			A new era in eco friendly furniture with Avelon, the French luxury retail brand with nice
-			fonts, tasteful colors and a beautiful way to display things digitally using modern web
-			technologies.
+			Aura is a French luxury brand ushering in a new era of eco-friendly furniture. We blend
+			timeless design with modern web technologies to create a beautiful digital experience,
+			featuring nice fonts and tasteful colors.
 		</p>
 	</div>
 	<!-- right side -->

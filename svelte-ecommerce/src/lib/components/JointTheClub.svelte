@@ -9,11 +9,10 @@
 	<div class="bg-surface-50 dark:bg-primary-900 flex min-h-[364px] w-full flex-col
 	 lg:items-center justify-center lg:justify-start p-[10%]">
 		<p class="text-primary-950 dark:text-surface-100 pt-0 lg:pt-[68px] header">
-			Join the club and get the benefits
+			Join Our Community
 		</p>
 		<p class="text-primary-950 dark:text-surface-100 pt-3 lg:pt-[16px] md:text-center smalltext ">
-			Sign up for our newsletter and receive exclusive offers on new <br /> ranges, sales, pop up stores
-			and more
+			Sign up for our newsletter to receive exclusive offers on new collections, sales, pop-up stores, and more.
 		</p>
 		<!-- sign up form -->
 		<div class="mt-5  lg:mt-[72px] lg:min-w-[354px]">

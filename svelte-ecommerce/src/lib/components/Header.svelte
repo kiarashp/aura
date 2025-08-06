@@ -78,7 +78,7 @@
 					class="growHover text-primary-900 dark:text-surface-50
 					col-span-6 col-start-1 row-start-1 self-center
 					  justify-self-start text-3xl font-medium md:col-end-13 md:justify-self-center md:text-center"
-					>Avion</a
+					>Aura</a
 				>
 
 				<!--cart and profile -->

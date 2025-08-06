@@ -17,7 +17,7 @@
 		>
 			<p class="text-2xl">Menu</p>
 			<a href="/about" class="darkHoverTxt text-xl sm:text-lg">About us</a>
-			<a href="/" class="darkHoverTxt text-xl sm:text-lg">New arrivals</a>
+			<a href="/products" class="darkHoverTxt text-xl sm:text-lg">New arrivals</a>
 			<a href="/products" class="darkHoverTxt text-xl sm:text-lg">All products</a>
 		</div>
 		<!--Categories col-->
@@ -57,7 +57,7 @@
 	<div class="my-4 flex items-center justify-between">
 		<!--copyright-->
 		<p class="text-surface-200 dark:text-surface-900 text-xs md:text-base">
-			Copyright 2022 Avion LTD
+			Copyright 2022 Aura LTD
 		</p>
 		<!-- social icons -->
 		<div class="text-surface-300 dark:text-primary-800 flex items-center gap-2 md:gap-6">

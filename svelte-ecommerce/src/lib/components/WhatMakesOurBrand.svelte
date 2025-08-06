@@ -21,8 +21,8 @@
 				>
 			</div>
 			<!-- mini title -->
-			<p class="mt-[16px] text-2xl">Next day as standard</p>
-			<p class="mt-[8px] text-base">Order before 3pm and get your order the next day as standard</p>
+			<p class="mt-[16px] text-2xl">Next-Day Delivery</p>
+			<p class="mt-[8px] text-base">Place your order by 3 PM and receive it the very next day, standard.</p>
 		</div>
 		<!-- col 2 -->
 		<div class="col-span-4 sm:col-span-2 md:col-span-1 flex grow basis-[305px] flex-col">
@@ -36,9 +36,9 @@
 				>
 			</div>
 			<!-- mini title -->
-			<p class="mt-[16px] text-2xl">Made by true artisans</p>
+			<p class="mt-[16px] text-2xl">Artisan Craftsmanship</p>
 			<p class="mt-[8px] text-base">
-				Handmade crafted goods made with real passion and craftmanship
+				Our goods are lovingly handmade with true passion and skill.
 			</p>
 		</div>
 		<!-- col 3 -->
@@ -64,9 +64,9 @@
 				>
 			</div>
 			<!-- mini title -->
-			<p class="mt-[16px] text-2xl">Unbeatable prices</p>
+			<p class="mt-[16px] text-2xl">Accessible Quality</p>
 			<p class="mt-[8px] text-base">
-				For our materials and quality you won’t find better prices anywhere
+				We offer unbeatable prices for the high quality of our materials.
 			</p>
 		</div>
 		<!-- col 4 -->
@@ -90,9 +90,9 @@
 				>
 			</div>
 			<!-- mini title -->
-			<p class="mt-[16px] text-2xl">Recycled packaging</p>
+			<p class="mt-[16px] text-2xl">Recycled Packaging</p>
 			<p class="mt-[8px] text-base">
-				We use 100% recycled packaging to ensure our footprint is manageable
+				We use 100% recycled packaging to ensure our environmental footprint is minimal.
 			</p>
 		</div>
 	</div>

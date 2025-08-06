@@ -23,5 +23,6 @@
 <div class="grid {customClass}">
 	{#each products as product, index (product.id)}
 		<ProductCard  {product} extraClass={cellCustomClass} imageClass={customImageClass} />
+		
 	{/each}
 </div>

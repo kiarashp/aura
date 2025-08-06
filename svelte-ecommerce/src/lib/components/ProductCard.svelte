@@ -2,6 +2,7 @@
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import type { Product } from '@prisma/client';
 	import { fade } from 'svelte/transition';
+	
 
 	interface props extends HTMLAnchorAttributes {
 		product: Product;
@@ -21,7 +22,7 @@
 	 hover:shadow-2xl
 	 hover:shadow-black/20
 	 {extraClass}"
-	 in:fade={{ duration: 400, delay: 100 }}
+	 in:fade={{ duration: 800 }}
 	{...restProps}
 >
 	<div class="{imageClass}  relative overflow-hidden">

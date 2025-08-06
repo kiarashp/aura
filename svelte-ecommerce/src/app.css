@@ -49,6 +49,9 @@
 .footerHeader {
 	@apply text-lg sm:text-lg md:text-lg;
 }
+.smallHeader{
+	@apply text-sm sm:text-lg;
+}
 .head2 {
 	font-size: 32px;
 }

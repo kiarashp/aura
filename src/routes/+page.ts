@@ -1,13 +1,8 @@
-import type { PageLoad } from './$types.js';
-import type { Product,Category } from '@prisma/client';
+import { getJson } from '$lib/api';
+import type { ProductWithCategory } from '../app';
+import type { PageLoad } from './$types';
 
-export const load:PageLoad= async ({ fetch })=> {
-    const productsRes = await fetch('/api/products');
-    const products: Product[] = productsRes.ok ? await productsRes.json() : [];
-
-    const categoriesRes = await fetch('/api/categories');
-    const categories2:Category[] = categoriesRes.ok ? await categoriesRes.json() : [];
-
-    return { categories2, products };
-
-}
+export const load: PageLoad = async ({ fetch }) => {
+	const products = await getJson<ProductWithCategory[]>(fetch, '/api/products');
+	return { products };
+};

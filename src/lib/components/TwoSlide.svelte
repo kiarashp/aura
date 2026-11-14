@@ -13,13 +13,13 @@
 	>
 		<!--top left text box-->
 		<div class="flex flex-col gap-[41px] lg:pr-[89px]">
-			<p class="text-surface-100 text-xl lg:text-4xl">Timeless Design for a Sustainable Future</p>
+			<h1 class="text-surface-100 text-xl lg:text-4xl">Timeless Design for a Sustainable Future</h1>
 
 			<SimpleButton
 				variant="primary"
 				btnText="View collection"
 				onclick={() => {
-					goto('/products');
+					goto('/categories');
 				}}
 			/>
 		</div>

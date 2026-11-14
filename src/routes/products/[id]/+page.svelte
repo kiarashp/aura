@@ -3,28 +3,30 @@
 	import { goto } from '$app/navigation';
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
+	import { formatPrice } from '$lib/format';
 
 	let cart = getCart();
 
 	const { data } = $props();
 
-	// let shit = $derived(page.params.id);
-
-	let amount = $state(0);
+	let amount = $state(1);
 
 	function increaseAmount() {
-		amount += 1;
+		if (amount < 99) amount += 1;
 	}
 	function decreaseAmount() {
-		if (amount > 0) {
-			amount -= 1;
-		}
+		if (amount > 1) amount -= 1;
 	}
 	function handleClickAddToCart() {
 		cart.addToCart(data.product, amount);
 		goto('/cart');
 	}
 </script>
+
+<svelte:head>
+	<title>{data.product.name} | Aura</title>
+	<meta name="description" content={data.product.description ?? data.product.name} />
+</svelte:head>
 
 <div class="bg-surface-50 dark:bg-primary-900 grid grid-cols-2 lg:pr-[80px]">
 	<div class="col-span-2 lg:col-span-1 aspect-square">
@@ -34,7 +36,7 @@
 		class="col-span-2 flex flex-col px-[25px] py-[55px] md:px-[80px] lg:col-span-1 lg:px-0 lg:pl-[80px]"
 	>
 		<h1 class="header mt-[91px] font-bold">{data.product.name}</h1>
-		<p class="mt-[13px] text-xl font-semibold">€{data.product.price}</p>
+		<p class="mt-[13px] text-xl font-semibold">{formatPrice(data.product.price)}</p>
 		<p class="mt-[54px] text-lg font-semibold">Description</p>
 		<p class="smalltext mt-[16px]">{data.product.description}</p>
 		<!-- highlights -->
@@ -50,9 +52,9 @@
 			<p class="smalltext font-semibold">Height</p>
 			<p class="smalltext font-semibold">Width</p>
 			<p class="smalltext font-semibold">Depth</p>
-			<p class="smalltext">{data.product.height}</p>
-			<p class="smalltext">{data.product.width}</p>
-			<p class="smalltext">{data.product.depth}</p>
+			<p class="smalltext">{data.product.height} cm</p>
+			<p class="smalltext">{data.product.width} cm</p>
+			<p class="smalltext">{data.product.depth} cm</p>
 		</div>
 
 		<div class="col-span-3 mt-[34px] grid grid-cols-12 lg:gap-3 gap-0">
@@ -63,7 +65,8 @@
 			>
 				<button
 					onclick={decreaseAmount}
-					aria-label="increase amount"
+					aria-label="decrease amount"
+					disabled={amount <= 1}
 					class="touch-manipulation hover:bg-surface-600 dark:hover:bg-tertiary-800 group/minus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
 				>
 					<svg
@@ -80,6 +83,7 @@
 				<button
 					onclick={increaseAmount}
 					aria-label="increase amount"
+					disabled={amount >= 99}
 					class="touch-manipulation hover:bg-surface-600 dark:hover:bg-tertiary-800 group/plus active:bg-primary-950 flex w-1/3 cursor-pointer items-center justify-center duration-300"
 				>
 					<!-- <Icon color="rgba(202, 198, 218, 1)" icon="streamline:add-1-solid" class="w-[11px]" /> -->
@@ -97,10 +101,12 @@
 	</div>
 </div>
 <!-- related products -->
-<div class="bg-surface-400 dark:bg-primary-800 flex w-full flex-col defaultPadding py-7">
-	<div class="text-surface-900 dark:text-surface-500 header">You might also like</div>
-	<ProductsGrid
-		customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-[33px]"
-		products={data.relatedProducts.products}
-	/>
-</div>
+{#if data.relatedProducts.length > 0}
+	<div class="bg-surface-400 dark:bg-primary-800 flex w-full flex-col defaultPadding py-7">
+		<div class="text-surface-900 dark:text-surface-500 header">You might also like</div>
+		<ProductsGrid
+			customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-[33px]"
+			products={data.relatedProducts}
+		/>
+	</div>
+{/if}

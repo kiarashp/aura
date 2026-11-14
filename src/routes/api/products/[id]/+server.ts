@@ -1,43 +1,15 @@
+import { error, json } from '@sveltejs/kit';
+import { prisma } from '$lib/server/db';
 import type { RequestHandler } from './$types';
 
-import { PrismaClient } from '@prisma/client';
-const prisma = new PrismaClient();
-
 export const GET: RequestHandler = async ({ params }) => {
-	try {
-		// Fetching products from the database
-		const id = Number(params.id);
+	// Only plain whole numbers are product ids; anything else ("abc", "1.5", "-3") cannot exist.
+	if (!/^\d{1,9}$/.test(params.id)) error(404, 'Product not found');
 
-		if (isNaN(id)) {
-			return new Response(JSON.stringify({ error: 'Invalid product ID' }), {
-				status: 400,
-				headers: {
-					'Content-Type': 'application/json'
-				}
-			});
-		}
-		const product = await prisma.product.findUnique({
-			where: {
-				id: id
-			},
-			include: {
-				category: true // This will include the full category object
-			}
-		});
-
-		return new Response(JSON.stringify(product), {
-			status: 200,
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-	} catch (error) {
-		console.error('Error fetching products:', error);
-		return new Response(JSON.stringify({ error: 'Failed to fetch the product' }), {
-			status: 500,
-			headers: {
-				'Content-Type': 'application/json'
-			}
-		});
-	}
+	const product = await prisma.product.findUnique({
+		where: { id: Number(params.id) },
+		include: { category: true }
+	});
+	if (!product) error(404, 'Product not found');
+	return json(product);
 };

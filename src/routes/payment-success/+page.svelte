@@ -1,30 +1,27 @@
-<section class="min-h-screen flex items-center justify-center bg-lightgrey px-4 py-12">
-  <div class="bg-white border border-bordergrey rounded-lg shadow-md p-8 max-w-md w-full text-center">
-    
-    <!-- Icon -->
-    <div class="flex justify-center mb-6">
-      <svg class="w-16 h-16 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-          d="M5 13l4 4L19 7" />
-      </svg>
-    </div>
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { getCart } from '$lib/components/CartProducts.svelte';
+	import MessagePage from '$lib/components/MessagePage.svelte';
+	import { linkButton, linkButtonSecondary } from '$lib/ui';
 
-    <!-- Title -->
-    <h2 class="text-darkprimary font-bold text-head2 mb-2">Payment Successful</h2>
+	const cart = getCart();
+	// The order is paid, so empty the cart (in memory and in the browser's saved copy).
+	onMount(() => {
+		cart.loadFromLocalStorage();
+		cart.clear();
+	});
+</script>
 
-    <!-- Message -->
-    <p class="text-primary text-head3 mb-6">
-      Thank you for your purchase! Your order has been processed and a confirmation email has been sent.
-    </p>
+<svelte:head>
+	<title>Payment successful | Aura</title>
+	<meta name="robots" content="noindex" />
+</svelte:head>
 
-    <!-- Buttons -->
-    <div class="flex justify-center gap-4">
-      <a href="/" class="bg-primary text-white px-5 py-2 rounded hover:bg-darkprimary transition-colors">
-        Home
-      </a>
-      <a href="/orders" class="border border-borderdark text-primary px-5 py-2 rounded hover:bg-lightgrey transition-colors">
-        View Orders
-      </a>
-    </div>
-  </div>
-</section>
+<MessagePage
+	title="Payment successful"
+	message="Thank you! This is a demo shop, so the test payment went through but nothing will be shipped."
+	image="/general/simple-chair-5.png"
+>
+	<a href="/" class={linkButton}>Back to home</a>
+	<a href="/categories" class={linkButtonSecondary}>Keep browsing</a>
+</MessagePage>

@@ -10,7 +10,7 @@
 		<div class="flex flex-col pb-3 lg:pr-[100px]">
 			<p class="text-primary-950 dark:text-surface-600 bigHeader">Our Story</p>
 			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
-				ur journey began in a small studio in Copenhagen with a simple idea: to make high-quality,
+				Our journey began in a small studio in Copenhagen with a simple idea: to make high-quality,
 				handcrafted furniture accessible to everyone.
 			</p>
 			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">

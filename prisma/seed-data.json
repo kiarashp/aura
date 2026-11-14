@@ -1,0 +1,273 @@
+{
+	"categories": [
+		{
+			"id": 1,
+			"name": "Seating",
+			"slug": "/seating"
+		},
+		{
+			"id": 2,
+			"name": "Tables",
+			"slug": "/tables"
+		},
+		{
+			"id": 3,
+			"name": "Storage",
+			"slug": "/storage"
+		},
+		{
+			"id": 4,
+			"name": "Beds",
+			"slug": "/beds"
+		}
+	],
+	"products": [
+		{
+			"id": 1,
+			"stripeId": "prod_SlVoGjYvHSpCU5",
+			"stripePriceId": "price_1RpymtHkZSwZ0RnGLQbhJRUR",
+			"name": "Harmony Fabric Sofa",
+			"description": "The Harmony Fabric Sofa brings a perfect blend of comfort and contemporary style to your living space. Upholstered in a durable, soft-touch fabric, its clean lines and generous seating invite relaxation.",
+			"price": 899.99,
+			"highlights": [
+				"Plush, comfortable cushions",
+				"Durable, easy-care fabric",
+				"Modern minimalist design"
+			],
+			"height": 80,
+			"width": 200,
+			"depth": 90,
+			"featured": false,
+			"imageUrl": "/products/Harmony-Fabric-Sofa.jpg",
+			"category_id": 1
+		},
+		{
+			"id": 2,
+			"stripeId": "prod_SlVpSWsOEuXOqQ",
+			"stripePriceId": "price_1RpynNHkZSwZ0RnGG7Z55anl",
+			"name": "Nordic Oak Accent Chair",
+			"description": "Inspired by Scandinavian design, this elegant accent chair features a solid oak frame and a comfortable, ergonomically shaped seat. Perfect for adding a touch of natural warmth to any room.",
+			"price": 349.5,
+			"highlights": [
+				"Solid oak construction",
+				"Ergonomic design",
+				"Lightweight and versatile"
+			],
+			"height": 75,
+			"width": 65,
+			"depth": 70,
+			"featured": false,
+			"imageUrl": "/products/Nordic-Oak-Accent-Chair.jpg",
+			"category_id": 1
+		},
+		{
+			"id": 3,
+			"stripeId": "prod_SlVpZm5RDmZHie",
+			"stripePriceId": "price_1RpynkHkZSwZ0RnGDqGtD8bX",
+			"name": "Plush Velvet Ottoman",
+			"description": "This luxurious velvet ottoman serves as a versatile accent piece, offering extra seating, a comfortable footrest, or a stylish surface for trays. Its rich texture and sturdy construction make it a valuable addition.",
+			"price": 129.99,
+			"highlights": [
+				"Soft velvet upholstery",
+				"Versatile use",
+				"Compact design"
+			],
+			"height": 40,
+			"width": 50,
+			"depth": 50,
+			"featured": false,
+			"imageUrl": "/products/Plush-Velvet-Ottoman.jpg",
+			"category_id": 1
+		},
+		{
+			"id": 4,
+			"stripeId": "prod_SlVqJtRhxeRTrL",
+			"stripePriceId": "price_1RpyoKHkZSwZ0RnGSiXW1UVl",
+			"name": "Loft Coffee Table with Storage",
+			"description": "This spacious coffee table combines a sleek, modern design with practical storage solutions. Featuring a lift-top mechanism and hidden compartments, it's perfect for keeping your living room tidy.",
+			"price": 299.99,
+			"highlights": [
+				"Lift-top mechanism",
+				"Hidden storage",
+				"Modern, clean lines"
+			],
+			"height": 45,
+			"width": 120,
+			"depth": 60,
+			"featured": false,
+			"imageUrl": "/products/Loft-Coffee-Table-with-Storage.jpg",
+			"category_id": 2
+		},
+		{
+			"id": 5,
+			"stripeId": "prod_SlVqP1Was5Z83q",
+			"stripePriceId": "price_1RpyoaHkZSwZ0RnGosmkwAsE",
+			"name": "Round Glass Dining Table",
+			"description": "Create an inviting dining experience with this elegant round dining table. Its tempered glass top and sturdy chrome base provide a contemporary look that brightens any dining area.",
+			"price": 449,
+			"highlights": [
+				"Tempered glass top",
+				"Chrome base",
+				"Space-saving round shape"
+			],
+			"height": 75,
+			"width": 100,
+			"depth": 100,
+			"featured": false,
+			"imageUrl": "/products/Round-Glass-Dining-Table.jpg",
+			"category_id": 2
+		},
+		{
+			"id": 6,
+			"stripeId": "prod_SlVq8kLuOReGCw",
+			"stripePriceId": "price_1Rpyp0HkZSwZ0RnGqdEcTdLK",
+			"name": "Grande Bookcase with Adjustable Shelves",
+			"description": "Organize your literary collection or display your favorite decor with this versatile Grande Bookcase. Its sturdy construction and adjustable shelves offer flexible storage for any room.",
+			"price": 389,
+			"highlights": [
+				"Ample storage",
+				"Adjustable shelves",
+				"Durable finish"
+			],
+			"height": 180,
+			"width": 90,
+			"depth": 30,
+			"featured": false,
+			"imageUrl": "/products/Grande-Bookcase-with-Adjustable-Shelves.jpg",
+			"category_id": 3
+		},
+		{
+			"id": 7,
+			"stripeId": "prod_SlVr47dOhF9mgv",
+			"stripePriceId": "price_1RpypKHkZSwZ0RnG8Nz0NVA9",
+			"name": "Countryside Dresser with 6 Drawers",
+			"description": "Bring rustic charm to your bedroom with this spacious dresser. Featuring six smooth-gliding drawers, it provides ample storage for clothing and linens, crafted with a warm, distressed finish.",
+			"price": 549.99,
+			"highlights": [
+				"Six deep drawers",
+				"Rustic aesthetic",
+				"Durable construction"
+			],
+			"height": 85,
+			"width": 140,
+			"depth": 45,
+			"featured": false,
+			"imageUrl": "/products/Countryside-Dresser-with-6-Drawers.jpg",
+			"category_id": 3
+		},
+		{
+			"id": 8,
+			"stripeId": "prod_SlVr36KTku4UfH",
+			"stripePriceId": "price_1RpypeHkZSwZ0RnGOZmGOVDK",
+			"name": "Compact Entryway Shoe Cabinet",
+			"description": " Keep your entryway clutter-free with this slim and functional shoe cabinet. It offers discreet storage for multiple pairs of shoes, helping to maintain a neat and welcoming space.",
+			"price": 119.5,
+			"highlights": [
+				"Space-saving design",
+				"Holds multiple pairs",
+				"Easy to clean"
+			],
+			"height": 100,
+			"width": 60,
+			"depth": 25,
+			"featured": false,
+			"imageUrl": "/products/Compact-Entryway-Shoe-Cabinet.jpg",
+			"category_id": 3
+		},
+		{
+			"id": 9,
+			"stripeId": "prod_SlVrVd29hLzS0s",
+			"stripePriceId": "price_1RpypzHkZSwZ0RnGSlR1maAh",
+			"name": "Modern Mirrored Wardrobe",
+			"description": "This elegant wardrobe offers expansive storage for your clothes and accessories, complete with a full-length mirrored door that enhances the sense of space in your bedroom.",
+			"price": 799,
+			"highlights": [
+				"Full-length mirror",
+				"Ample hanging space",
+				"Sleek, modern finish"
+			],
+			"height": 200,
+			"width": 120,
+			"depth": 60,
+			"featured": false,
+			"imageUrl": "/products/Modern-Mirrored-Wardrobe.jpg",
+			"category_id": 3
+		},
+		{
+			"id": 10,
+			"stripeId": "prod_SlVsmk3vUkpydu",
+			"stripePriceId": "price_1RpyqNHkZSwZ0RnGTZoMEZ5T",
+			"name": "Cloud Nine Platform Bed Frame",
+			"description": "Experience restful nights with the Cloud Nine Platform Bed Frame. Its sturdy wooden slats eliminate the need for a box spring, providing excellent mattress support and a clean, contemporary look.",
+			"price": 499,
+			"highlights": [
+				"No box spring needed",
+				"Sturdy wooden slats",
+				"Modern low profile"
+			],
+			"height": 30,
+			"width": 160,
+			"depth": 210,
+			"featured": false,
+			"imageUrl": "/products/Cloud-Nine-Platform Bed-Frame.jpg",
+			"category_id": 4
+		},
+		{
+			"id": 11,
+			"stripeId": "prod_SlVs2PVbNTYsCZ",
+			"stripePriceId": "price_1RpyqdHkZSwZ0RnGZo6GtB5H",
+			"name": "Royal Velvet Tufted Bed",
+			"description": "Indulge in luxurious comfort with the Royal Velvet Tufted Bed. Its grand, button-tufted headboard upholstered in sumptuous velvet creates a sophisticated focal point for your master bedroom.",
+			"price": 1299,
+			"highlights": [
+				"Luxurious velvet upholstery",
+				"Grand tufted headboard",
+				"Solid wood frame"
+			],
+			"height": 130,
+			"width": 190,
+			"depth": 220,
+			"featured": false,
+			"imageUrl": "/products/Royal-Velvet-Tufted-Bed.jpg",
+			"category_id": 4
+		},
+		{
+			"id": 12,
+			"stripeId": "prod_SlVszgtbgLN2Ub",
+			"stripePriceId": "price_1RpyqwHkZSwZ0RnGa2CTqTuZ",
+			"name": "Kids Adventure Bunk Bed with Desk",
+			"description": "Maximize space in your child's room with this all-in-one bunk bed. Featuring a sturdy ladder, safety rails, and an integrated desk underneath, it's perfect for sleep, study, and play.",
+			"price": 649.5,
+			"highlights": [
+				"Integrated desk",
+				"Space-saving design",
+				"Safety rails included"
+			],
+			"height": 170,
+			"width": 98,
+			"depth": 200,
+			"featured": false,
+			"imageUrl": "/products/Kids-Adventure-Bunk-Bed-with-Desk.jpg",
+			"category_id": 4
+		},
+		{
+			"id": 13,
+			"stripeId": "prod_SlVtNaxkBWEppr",
+			"stripePriceId": "price_1RpyrFHkZSwZ0RnGTYUvpIRq",
+			"name": "Minimalist Metal Bed Frame",
+			"description": "This sleek and durable metal bed frame offers a simple yet stylish solution for any bedroom. Its minimalist design fits seamlessly with various decor styles, providing reliable support for your mattress.",
+			"price": 189.99,
+			"highlights": [
+				"Durable metal construction",
+				"Easy to assemble",
+				"Under-bed storage space"
+			],
+			"height": 25,
+			"width": 90,
+			"depth": 190,
+			"featured": false,
+			"imageUrl": "/products/Minimalist-Metal-Bed-Frame.jpg",
+			"category_id": 4
+		}
+	]
+}

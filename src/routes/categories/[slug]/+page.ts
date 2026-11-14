@@ -1,11 +1,8 @@
-import type { PageLoad } from './$types.js';
-import type { CategoryWithProducts } from '../../../app.js';
+import { getJson } from '$lib/api';
+import type { CategoryWithProducts } from '../../../app';
+import type { PageLoad } from './$types';
+
 export const load: PageLoad = async ({ fetch, params }) => {
-	const categoryRes = await fetch(`/api/categories/${params.slug}/`);
-
-	const category: CategoryWithProducts = categoryRes.ok ? await categoryRes.json() : {};
-
-	return {
-		category
-	};
+	const category = await getJson<CategoryWithProducts>(fetch, `/api/categories/${params.slug}`);
+	return { category };
 };

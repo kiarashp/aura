@@ -1,17 +1,17 @@
 <script>
 	import { goto } from '$app/navigation';
-	onMount(() => {
-		console.log('About page loaded');
-	});
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
-	import { onMount } from 'svelte';
 </script>
 
-<div
-	class="bg-surface-300 dark:bg-primary-900 defaultPadding bigHeader flex min-h-[246px] w-full items-center justify-center py-[67px]"
+<svelte:head>
+	<title>About us | Aura</title>
+</svelte:head>
+
+<h1
+	class="bg-surface-300 dark:bg-primary-900 defaultPadding bigHeader flex min-h-[246px] w-full items-center justify-center py-[67px] text-center"
 >
 	Crafted with Love, Built on Quality
-</div>
+</h1>
 
 <!-- get in touch first -->
 <div class="flex flex-col-reverse lg:min-h-[603px] lg:flex-row">
@@ -30,10 +30,10 @@
 		</div>
 		<div class="my-[64px] w-[150px]">
 			<SimpleButton
-				btnText="Learn More"
+				btnText="Shop now"
 				btnWidth="w-full"
 				onclick={() => {
-					goto('/about');
+					goto('/categories');
 				}}
 			/>
 		</div>
@@ -74,10 +74,10 @@
 		</div>
 		<div class="my-[64px] w-[150px]">
 			<SimpleButton
-				btnText="Learn More"
+				btnText="Shop now"
 				btnWidth="w-full"
 				onclick={() => {
-					goto('/about');
+					goto('/categories');
 				}}
 			/>
 		</div>

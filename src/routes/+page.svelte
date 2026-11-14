@@ -3,7 +3,6 @@
 	import ProductCard from '$lib/components/ProductCard.svelte';
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 	import GetInTouch from '$lib/components/GetInTouch.svelte';
-	import JointTheClub from '$lib/components/JointTheClub.svelte';
 	import WhatMakesOurBrand from '$lib/components/WhatMakesOurBrand.svelte';
 	import TwoSlide from '$lib/components/TwoSlide.svelte';
 	import { goto } from '$app/navigation';
@@ -43,7 +42,7 @@
 		<SimpleButton
 			btnText="View all"
 			onclick={() => {
-				goto('/products');
+				goto('/categories');
 			}}
 		/>
 	</div>
@@ -66,11 +65,10 @@
 		<SimpleButton
 			btnText="View all"
 			onclick={() => {
-				goto('/products');
+				goto('/categories');
 			}}
 		/>
 	</div>
 </div>
 
-<JointTheClub />
 <GetInTouch />

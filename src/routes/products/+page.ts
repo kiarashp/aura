@@ -1,6 +1,7 @@
-import type { Load } from '@sveltejs/kit';
 import { redirect } from '@sveltejs/kit';
+import type { PageLoad } from './$types';
 
-export const load: Load = async () => {
-	throw redirect(307, '/categories');
+// There is no separate products list page; all products live on /categories.
+export const load: PageLoad = () => {
+	redirect(308, '/categories');
 };

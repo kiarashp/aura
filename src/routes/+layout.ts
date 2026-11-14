@@ -1,9 +1,9 @@
-	import type { LayoutLoad } from './$types.js';
-    export const load:LayoutLoad =  async  ({ fetch })=> {
+import type { Category } from '@prisma/client';
+import type { LayoutLoad } from './$types';
 
-    const categoriesRes = await fetch('/api/categories');
-    const allCategories = categoriesRes.ok ? await categoriesRes.json() : [];
-
-    return { allCategories };
-
-}
+export const load: LayoutLoad = async ({ fetch }) => {
+	// The menu should still show if the category list fails, so no error page here.
+	const res = await fetch('/api/categories');
+	const allCategories: Category[] = res.ok ? await res.json() : [];
+	return { allCategories };
+};

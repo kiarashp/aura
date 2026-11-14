@@ -2,6 +2,7 @@
 	import type { HTMLAnchorAttributes } from 'svelte/elements';
 	import type { Product } from '@prisma/client';
 	import { fade } from 'svelte/transition';
+	import { formatPrice } from '$lib/format';
 	
 
 	interface props extends HTMLAnchorAttributes {
@@ -41,7 +42,7 @@
 			{product.name}
 		</p>
 		<p class="text-surface-950 mt-[8px] text-sm">
-			€{product.price}
+			{formatPrice(product.price)}
 		</p>
 	</div>
 </a>

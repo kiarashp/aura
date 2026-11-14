@@ -10,14 +10,14 @@
 	// Filter state
 	let selectedCategories = $state(new Set<string>());
 	let selectedPriceRanges = $state(new Set<string>());
-	let itemsToShow = $state(3);
+	let itemsToShow = $state(6);
 
 	// Price ranges configuration
 	const priceRanges = [
-		{ label: 'Under €50', value: 'under-50', min: 0, max: 50 },
-		{ label: '€50 - €100', value: '50-100', min: 50, max: 100 },
-		{ label: '€100 - €200', value: '100-200', min: 100, max: 200 },
-		{ label: 'Over €200', value: 'over-200', min: 200, max: Infinity }
+		{ label: 'Under €200', value: 'under-200', min: 0, max: 200 },
+		{ label: '€200 - €500', value: '200-500', min: 200, max: 500 },
+		{ label: '€500 - €1,000', value: '500-1000', min: 500, max: 1000 },
+		{ label: 'Over €1,000', value: 'over-1000', min: 1000, max: Infinity }
 	];
 
 	// Helper function to check if product matches price range
@@ -26,7 +26,7 @@
 		if (!range || !product.price) return false;
 
 		const price = typeof product.price === 'number' ? product.price : parseFloat(product.price);
-		return price >= range.min && price <= range.max;
+		return price >= range.min && price < range.max;
 	}
 
 	// Filtered products based on active filters
@@ -51,10 +51,6 @@
 	let displayProducts = $derived.by(() => {
 		return filteredProducts.slice(0, itemsToShow);
 	});
-	$inspect('displayProducts', displayProducts);
-	$inspect('filteredProducts', filteredProducts);
-	$inspect('selectedCategories', selectedCategories);
-	$inspect('selectedPriceRanges', selectedPriceRanges);
 
 	// Check if there are more products to load
 	let hasMore = $derived.by(() => {
@@ -66,7 +62,7 @@
 		// This runs whenever selectedCategories or selectedPriceRanges change
 		selectedCategories;
 		selectedPriceRanges;
-		itemsToShow = 3; // Reset to show first 3 items
+		itemsToShow = 6; // Reset to show the first 6 items
 	});
 
 	// Filter handlers
@@ -112,12 +108,16 @@
 	let resultCount = $derived(filteredProducts.length);
 </script>
 
+<svelte:head>
+	<title>All products | Aura</title>
+</svelte:head>
+
 <div
 	class="defaultPadding relative flex h-[209px] w-full items-end bg-cover bg-bottom pb-[36px]"
 	style="background-image: url('/general/decorative-11.jpg');"
 >
 	<span class="bg-primary-950 absolute inset-0 z-0 opacity-30"></span>
-	<p class="text-surface-100 bigHeader z-10">All products</p>
+	<h1 class="text-surface-100 bigHeader z-10">All products</h1>
 </div>
 
 <div class="bg-surface-200 dark:bg-primary-900 defaultPadding flex flex-row">

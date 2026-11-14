@@ -34,3 +34,28 @@ model Category {
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
 }
+
+// A paid order. Saved when Stripe says the payment went through (see src/lib/server/orders.ts).
+// No names, emails or addresses are kept: only what was bought.
+model Order {
+  id              Int         @id @default(autoincrement())
+  stripeSessionId String      @unique
+  // "customer" when the demo customer bought it, empty for guests.
+  account         String?
+  total           Float
+  createdAt       DateTime    @default(now())
+  items           OrderItem[]
+
+  @@index([account, createdAt])
+}
+
+model OrderItem {
+  id        Int    @id @default(autoincrement())
+  orderId   Int
+  order     Order  @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  // Kept as plain copies, so an order still reads right if the product changes or is removed.
+  productId Int?
+  name      String
+  price     Float
+  quantity  Int
+}

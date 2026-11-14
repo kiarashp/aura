@@ -1,6 +1,6 @@
 # Aura — where we are
 
-Last updated: 14 Nov 2026 (after step 2).
+Last updated: 14 Nov 2026 (after step 3).
 
 Aura is a **portfolio demo shop**, not a real shop: a SvelteKit + Prisma + Stripe furniture store that
 proves Kia can build one. It must look finished and never break while a recruiter clicks around.
@@ -22,18 +22,26 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - Page titles everywhere, one price format (`src/lib/format.ts`), price filters fit real prices.
    - Seed: `pnpm prisma db seed` fills an empty database from `prisma/seed-data.json` (13 products,
      4 categories, same ids). Safe to run again.
-3. **NEXT** — one-click demo logins, **Customer** and **Admin**, read-only. Copy how
-   https://amg.kiapmd.dev/sign-in and https://library.kiapmd.dev/login do it (read their code in
-   `../amg-next` and `../Library-Lara` first, so all three match). Customer sees order history (needs a
-   Stripe webhook: Stripe calling the site when a payment is done). Admin sees a product list.
-   Also swap the header's "profile" links (desktop icon + mobile menu) for "Sign in": `/profile` is
-   still the old fake page with forms that save nothing.
+3. **DONE** — one-click demo logins, tested on a local build (desktop + phone):
+   - `/sign-in` has two buttons, "Try as a customer" / "Try as the admin", like Library's
+     `demo-login.blade.php`. No passwords, no sign-up. A cookie `aura_demo` holds `customer`/`admin`
+     (`src/lib/server/demo.ts`, read in `src/hooks.server.ts`). It is not signed on purpose: both logins
+     are public and read-only, so forging it gains nothing. Sign out: POST `/sign-out`.
+   - `/account` (customer): the shared demo customer's orders. `/admin`: counts, latest 20 orders, all
+     products. Nothing on either page saves. Header, mobile menu and footer show Sign in / My orders / Admin.
+   - Orders: new `Order` + `OrderItem` tables (migration `20261114222953_orders`, already applied to the
+     Neon database). Saved by `src/lib/server/orders.ts` from two places: the payment-success page
+     (`?session_id=`) and the webhook `POST /api/stripe-webhook` (off unless `STRIPE_WEBHOOK_SECRET` is set).
+     The unique Stripe session id stops double saves. No names/emails kept. Orders older than 30 days are
+     deleted on each new order, except the 3 seeded samples (`seed_order_*`, in `prisma/seed.mjs`).
+   - Old `/profile` page and its fake components are deleted.
 4. Polish: every page at phone and desktop size in an isolated browser, a link checker, Lighthouse,
    shrink the 4.7 MB of images.
 5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
    Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
    `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,
-   `STRIPEAPIKEY` (a **test** key). Then a README with screenshots (today's README is the default one).
+   `STRIPEAPIKEY` (a **test** key), and `STRIPE_WEBHOOK_SECRET` after adding a webhook in the Stripe
+   dashboard for `https://aura.kiapmd.dev/api/stripe-webhook`, event `checkout.session.completed`. Then a README with screenshots (today's README is the default one).
 
 ## Decisions Kia made
 
@@ -45,7 +53,8 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
 
 ## Not judged by Kia yet
 
-- The look of the new error / payment pages, the demo banner and the footer's "About this shop" column.
+- The look of the new error / payment pages, the demo banner, the footer's "About this shop" column,
+  and the new sign-in, My orders and Admin pages.
   Kia hasn't seen the site since the fixes.
 
 ## How to run and test

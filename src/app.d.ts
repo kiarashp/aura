@@ -5,7 +5,10 @@ import { Prisma } from '@prisma/client';
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			// Which public demo login the visitor is using, if any (see src/lib/server/demo.ts).
+			account: import('$lib/server/demo').Account | null;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

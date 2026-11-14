@@ -4,6 +4,7 @@
 	import MessagePage from '$lib/components/MessagePage.svelte';
 	import { linkButton, linkButtonSecondary } from '$lib/ui';
 
+	let { data } = $props();
 	const cart = getCart();
 	// The order is paid, so empty the cart (in memory and in the browser's saved copy).
 	onMount(() => {
@@ -22,6 +23,10 @@
 	message="Thank you! This is a demo shop, so the test payment went through but nothing will be shipped."
 	image="/general/simple-chair-5.png"
 >
-	<a href="/" class={linkButton}>Back to home</a>
+	{#if data.savedToAccount}
+		<a href="/account" class={linkButton}>See my orders</a>
+	{:else}
+		<a href="/" class={linkButton}>Back to home</a>
+	{/if}
 	<a href="/categories" class={linkButtonSecondary}>Keep browsing</a>
 </MessagePage>

@@ -1,18 +1,7 @@
-import Stripe from 'stripe';
 import { error, json } from '@sveltejs/kit';
-import { env } from '$env/dynamic/private';
 import { prisma } from '$lib/server/db';
+import { getStripe } from '$lib/server/stripe';
 import type { RequestHandler } from './$types';
-
-// Read at run time (dynamic), so the same build works on any server with its own keys.
-let stripe: Stripe | undefined;
-function getStripe() {
-	if (!env.STRIPEAPIKEY) error(500, 'Payments are not set up');
-	stripe ??= new Stripe(env.STRIPEAPIKEY, {
-		apiVersion: (env.API_VERSION || '2025-06-30.basil') as Stripe.LatestApiVersion
-	});
-	return stripe;
-}
 
 type CartLine = { id: number; quantity: number };
 
@@ -30,7 +19,7 @@ function readCart(body: unknown): CartLine[] {
 	return lines;
 }
 
-export const POST: RequestHandler = async ({ request, url }) => {
+export const POST: RequestHandler = async ({ request, url, locals }) => {
 	const lines = readCart(await request.json().catch(() => null));
 	if (lines.length === 0) error(400, 'Your cart is empty');
 
@@ -48,7 +37,10 @@ export const POST: RequestHandler = async ({ request, url }) => {
 	const session = await getStripe().checkout.sessions.create({
 		line_items: lineItems,
 		mode: 'payment',
-		success_url: `${url.origin}/payment-success`,
+		// Marks orders by the demo customer, so they show on its "My orders" page.
+		metadata: locals.account === 'customer' ? { account: 'customer' } : {},
+		// Stripe fills in {CHECKOUT_SESSION_ID}; the success page uses it to save the order.
+		success_url: `${url.origin}/payment-success?session_id={CHECKOUT_SESSION_ID}`,
 		cancel_url: `${url.origin}/payment-canceled`
 	});
 	if (!session.url) error(502, 'Could not start the payment');

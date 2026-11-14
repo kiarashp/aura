@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Category } from '@prisma/client';
+	import { page } from '$app/state';
 
 	interface Props {
 		categories: Category[];
@@ -34,8 +35,14 @@
 			class="text-surface-200 dark:text-surface-900 col-span-12 flex flex-col items-center gap-[12px] sm:col-span-6 sm:items-start lg:col-span-3"
 		>
 			<p class="text-2xl">My Account</p>
-			<a href="/cart" class="darkHoverTxt text-xl sm:text-lg">My Cart </a>
-			
+			<a href="/cart" class="darkHoverTxt text-xl sm:text-lg">My Cart</a>
+			{#if page.data.account === 'admin'}
+				<a href="/admin" class="darkHoverTxt text-xl sm:text-lg">Admin</a>
+			{:else if page.data.account === 'customer'}
+				<a href="/account" class="darkHoverTxt text-xl sm:text-lg">My orders</a>
+			{:else}
+				<a href="/sign-in" class="darkHoverTxt text-xl sm:text-lg">Sign in</a>
+			{/if}
 		</div>
 		<!-- about this demo -->
 		<div

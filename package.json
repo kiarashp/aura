@@ -1,5 +1,5 @@
 {
-	"name": "svelte-ecommerce",
+	"name": "aura",
 	"private": true,
 	"version": "0.0.1",
 	"type": "module",
@@ -43,5 +43,6 @@
 		"@lucide/svelte": "^0.533.0",
 		"@prisma/client": "^6.11.0",
 		"stripe": "^18.3.0"
-	}
+	},
+	"packageManager": "pnpm@12.18.0"
 }

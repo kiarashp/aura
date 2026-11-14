@@ -1,4 +1,5 @@
 <script lang="ts">
+	import { linkButtonSecondary } from '$lib/ui';
 </script>
 
 <!-- get in touch -->
@@ -7,23 +8,24 @@
 	<div
 		class="mt-[72px] flex w-full flex-col justify-between px-[25px] md:px-[80px] lg:w-1/2 lg:px-0"
 	>
-		<div class="flex flex-col pb-3 lg:pr-[100px]">
-			<p class="text-primary-950 dark:text-surface-600 bigHeader">Our Story</p>
+		<div class="flex flex-col pb-[56px] lg:pr-[100px]">
+			<p class="text-primary-950 dark:text-surface-600 bigHeader">Behind Aura</p>
 			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
-				Our journey began in a small studio in Copenhagen with a simple idea: to make high-quality,
-				handcrafted furniture accessible to everyone.
+				Aura is a portfolio project: a complete small shop, built to show how the parts of a real
+				online store fit together.
 			</p>
 			<p class="subheader text-surface-800 dark:text-tertiary-500 mt-[35px]">
-				Our passion for design and craftsmanship quickly made our local boutique a favorite among
-				the design community, and we've since grown into a global brand with over 400 outlets.
+				Products, prices and orders live in a PostgreSQL database. Payments go through Stripe, and
+				Stripe tells the shop when an order is paid. The pages are built with SvelteKit.
 			</p>
+			<a href="/about" class="{linkButtonSecondary} mt-[35px] self-start">How it's built</a>
 		</div>
 	</div>
 	<!-- right -->
 	<div class="flex w-full flex-col lg:w-1/2">
 		<img
 			src="/products/Countryside-Dresser-with-6-Drawers.jpg"
-			alt="decorative elements"
+			alt="A pale wooden dresser with six drawers"
 			class="h-full w-full object-cover"
 		/>
 	</div>

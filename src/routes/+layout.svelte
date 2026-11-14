@@ -14,7 +14,7 @@
 </script>
 
 <svelte:head>
-	<title>Aura | Timeless furniture</title>
+	<title>Aura | Quiet furniture for everyday rooms</title>
 	<meta
 		name="description"
 		content="Aura is a demo furniture shop: browse products, fill a cart and pay with a Stripe test card."

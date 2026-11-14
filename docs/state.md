@@ -44,8 +44,9 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - No page scrolls sideways at 360/390/768/1280 px. Phone fixes: filters on All products sit above the
      products, gap above the product name removed. Cart no longer claims tax/shipping is added.
    - Left for go-live: compression and cache headers belong in Caddy, not the app.
-   - Not changed (Kia's call): the home page's made-up shop story ("French luxury brand", "400 outlets",
-     "featuring nice fonts and tasteful colors").
+   - Shop text rewritten (Kia asked): no fake company facts. Home: new tagline "Quiet furniture for
+     everyday rooms", "Try the whole shop" (4 true features), "Behind Aura" (portfolio + tech).
+     About: "The shop" + "How it's built", with links to the demo logins and the GitHub code.
 5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
    Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
    `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,

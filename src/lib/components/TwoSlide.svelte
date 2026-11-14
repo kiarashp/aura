@@ -13,7 +13,7 @@
 	>
 		<!--top left text box-->
 		<div class="flex flex-col gap-[41px] lg:pr-[89px]">
-			<h1 class="text-surface-100 text-xl lg:text-4xl">Timeless Design for a Sustainable Future</h1>
+			<h1 class="text-surface-100 text-xl lg:text-4xl">Quiet furniture for everyday rooms</h1>
 
 			<SimpleButton
 				variant="primary"
@@ -25,9 +25,9 @@
 		</div>
 		<!-- bottom left text box -->
 		<p class="text-surface-100 mt-8 text-base lg:mt-0 lg:text-lg">
-			Aura is a French luxury brand ushering in a new era of eco-friendly furniture. We blend
-			timeless design with modern web technologies to create a beautiful digital experience,
-			featuring nice fonts and tasteful colors.
+			Aura is a small collection of sofas, tables, storage and beds, chosen for soft colours and
+			simple shapes. Browse the rooms, fill a cart and check out with a test card. It's a demo, so
+			nothing is charged.
 		</p>
 	</div>
 	<!-- right side -->

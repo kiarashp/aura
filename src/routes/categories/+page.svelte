@@ -120,12 +120,13 @@
 	<h1 class="text-surface-100 bigHeader z-10">All products</h1>
 </div>
 
-<div class="bg-surface-200 dark:bg-primary-900 defaultPadding flex flex-row">
+<div class="bg-surface-200 dark:bg-primary-900 defaultPadding flex flex-col sm:flex-row">
 	<!-- Filters Sidebar -->
-	<div class="w-2/4 pr-2 pt-[48px] sm:w-1/4 sm:px-2">
-		<div class="flex flex-col items-start sticky lg:static pb-[50px] top-[110px] max-h-[calc(100vh-80px)] lg:max-h-max overflow-y-scroll lg:overflow-y-auto pl-1 ">
+	<!-- Phone: filters sit above the products. Wider screens: a side panel. -->
+	<div class="w-full pt-[32px] sm:w-1/4 sm:px-2 sm:pt-[48px]">
+		<div class="grid grid-cols-2 gap-x-4 pl-1 sm:sticky sm:top-[110px] sm:flex sm:max-h-[calc(100vh-80px)] sm:flex-col sm:items-start sm:overflow-y-auto sm:pb-[50px] lg:static lg:max-h-max">
 			<!-- Filter Header -->
-			<div class="mt-4 flex-col w-full items-center justify-between">
+			<div class="col-span-2 mt-4 w-full flex-col items-center justify-between">
 				<h3 class="smallHeader font-semibold">Filters</h3>
 				{#if totalFiltersActive > 0}
 					<button
@@ -138,7 +139,7 @@
 			</div>
 
 			<!-- Results Counter -->
-			<p class="smalltext mt-2">
+			<p class="smalltext col-span-2 mt-2">
 				{resultCount} product{resultCount !== 1 ? 's' : ''} found
 			</p>
 
@@ -191,7 +192,7 @@
 	</div>
 
 	<!-- Products Display -->
-	<div class="mt-[33px] w-2/4 py-[36px] sm:w-3/4">
+	<div class="w-full py-[24px] sm:mt-[33px] sm:w-3/4 sm:py-[36px]">
 		<!-- Active Filters Display -->
 		{#if totalFiltersActive > 0}
 			<div class="mb-6 lg:flex flex-wrap gap-2 hidden ">

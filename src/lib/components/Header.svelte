@@ -116,7 +116,7 @@
 								: ''}"
 						></span>
 					</button>
-					<a href="/cart" class="hidden md:block">
+					<a href="/cart" class="hidden md:block" aria-label="Cart">
 						<CartButton />
 					</a>
 					<!-- account: "Sign in", or where the demo login goes -->

@@ -1,6 +1,6 @@
 # Aura — where we are
 
-Last updated: 14 Nov 2026 (after step 3).
+Last updated: 14 Nov 2026 (after step 4).
 
 Aura is a **portfolio demo shop**, not a real shop: a SvelteKit + Prisma + Stripe furniture store that
 proves Kia can build one. It must look finished and never break while a recruiter clicks around.
@@ -35,8 +35,17 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      The unique Stripe session id stops double saves. No names/emails kept. Orders older than 30 days are
      deleted on each new order, except the 3 seeded samples (`seed_order_*`, in `prisma/seed.mjs`).
    - Old `/profile` page and its fake components are deleted.
-4. Polish: every page at phone and desktop size in an isolated browser, a link checker, Lighthouse,
-   shrink the 4.7 MB of images.
+4. **DONE** — polish, tested on a local build:
+   - Images 4.7 MB → 1.3 MB: 17 unused files deleted, the two used chair PNGs are now 1000 px WebP.
+     A product photo with a space in its name renamed (`Cloud-Nine-Platform-Bed-Frame.jpg`, seed updated).
+   - Link check (every page as guest, customer and admin): nothing broken. Lighthouse on 5 pages:
+     Best practices 100, SEO 100, Accessibility 94 → fixed its one issue (dark-mode switch and cart link
+     had no name). Phone speed: main picture in 0.66 s on a slowed-down phone.
+   - No page scrolls sideways at 360/390/768/1280 px. Phone fixes: filters on All products sit above the
+     products, gap above the product name removed. Cart no longer claims tax/shipping is added.
+   - Left for go-live: compression and cache headers belong in Caddy, not the app.
+   - Not changed (Kia's call): the home page's made-up shop story ("French luxury brand", "400 outlets",
+     "featuring nice fonts and tasteful colors").
 5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
    Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
    `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,

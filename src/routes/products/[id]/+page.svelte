@@ -35,7 +35,7 @@
 	<div
 		class="col-span-2 flex flex-col px-[25px] py-[55px] md:px-[80px] lg:col-span-1 lg:px-0 lg:pl-[80px]"
 	>
-		<h1 class="header mt-[91px] font-bold">{data.product.name}</h1>
+		<h1 class="header font-bold lg:mt-[91px]">{data.product.name}</h1>
 		<p class="mt-[13px] text-xl font-semibold">{formatPrice(data.product.price)}</p>
 		<p class="mt-[54px] text-lg font-semibold">Description</p>
 		<p class="smalltext mt-[16px]">{data.product.description}</p>

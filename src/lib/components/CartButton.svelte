@@ -1,6 +1,6 @@
 <!--cart-->
 <div class="h-[22px] w-[22px] flex growHover">
-	<svg viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary-950 dark:text-surface-200">
+	<svg aria-hidden="true" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-primary-950 dark:text-surface-200">
 		<rect fill="white" style="mix-blend-mode:multiply" />
 		<path
 			d="M5 15C5.55228 15 6 14.5523 6 14C6 13.4477 5.55228 13 5 13C4.44772 13 4 13.4477 4 14C4 14.5523 4.44772 15 5 15Z"

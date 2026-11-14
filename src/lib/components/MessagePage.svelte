@@ -9,14 +9,14 @@
 		image?: string;
 		children?: Snippet; // the buttons
 	}
-	let { title, message, image = '/general/simple-chair-1.png', children }: Props = $props();
+	let { title, message, image = '/general/simple-chair-1.webp', children }: Props = $props();
 </script>
 
 <section
 	class="bg-surface-50 dark:bg-primary-900 defaultPadding flex grow items-center justify-center py-16"
 >
 	<div class="flex w-full max-w-[560px] flex-col items-center text-center">
-		<img src={image} alt="" class="w-[180px] drop-shadow-lg sm:w-[220px]" />
+		<img src={image} alt="" width="1000" height="1000" class="h-auto w-[180px] drop-shadow-lg sm:w-[220px]" />
 		<h1 class="text-primary-950 dark:text-surface-100 bigHeader mt-10 font-semibold">{title}</h1>
 		<p class="text-surface-900 dark:text-surface-300 subheader mt-5">{message}</p>
 		{#if children}

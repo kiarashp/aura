@@ -33,7 +33,7 @@
 	<!-- right side -->
 	<div class="col-span-12 flex items-end justify-center bg-[#83A9AC] lg:col-span-5">
 		<div class="w-[70%] py-5 lg:p-0">
-			<img src="/general/simple-chair-5.png" alt="" />
+			<img src="/general/simple-chair-5.webp" alt="" width="1000" height="1000" fetchpriority="high" />
 		</div>
 	</div>
 </div>

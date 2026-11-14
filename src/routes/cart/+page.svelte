@@ -152,7 +152,7 @@
 				<p class="text-lg">{formatPrice(total)}</p>
 			</div>
 			<p class="text-primary-500 dark:text-primary-100 col-span-12 mt-[12px] text-right">
-				Taxes and shipping are calculated at checkout
+				No tax or shipping: this is a demo shop
 			</p>
 			{#if checkoutError}
 				<p class="text-error-600 dark:text-error-400 col-span-12 mt-[16px] text-right" role="alert">

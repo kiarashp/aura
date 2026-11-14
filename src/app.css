@@ -67,3 +67,10 @@
 .head6 {
 	font-size: 14px;
 }
+
+/* Set for a split second while dark mode is switched (see ToggleDarkMode.svelte),
+   so every colour changes at once instead of fading at different speeds. */
+.theme-switching,
+.theme-switching * {
+	transition: none !important;
+}

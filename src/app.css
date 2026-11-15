@@ -10,6 +10,21 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 @theme {
+	/* Brand font for the logo and headings (self-hosted, see +layout.svelte). */
+	--font-brand: 'Fraunces Variable', Georgia, serif;
+
+	/* Mint: the soft green-blue of the logo's glow. Added to the purple palette as the calm accent. */
+	--color-mint-50: #f1f7f6;
+	--color-mint-100: #dfecea;
+	--color-mint-200: #c3dbd9;
+	--color-mint-300: #a3c5c4;
+	--color-mint-400: #83a9ac;
+	--color-mint-500: #6a9195;
+	--color-mint-600: #56777b;
+	--color-mint-700: #476165;
+	--color-mint-800: #3c5154;
+	--color-mint-900: #2f3f42;
+
 	--color-darkprimary: rgba(42, 37, 75, 1);
 	--color-primary: rgba(78, 77, 147, 1);
 	--color-lightgrey: rgba(249, 249, 249, 1);
@@ -73,4 +88,85 @@
 .theme-switching,
 .theme-switching * {
 	transition: none !important;
+}
+
+/* ---------- Brand look (Nov 2026 redesign) ---------- */
+
+/* Headings use the brand font, like the logo. */
+h1,
+h2,
+.bigHeader,
+.header {
+	font-family: var(--font-brand);
+	font-optical-sizing: auto;
+	letter-spacing: -0.01em;
+}
+
+/* Scroll-in effect, switched on per element by the `reveal` action (src/lib/actions/reveal.ts). */
+.reveal {
+	opacity: 0;
+	translate: 0 28px;
+	transition:
+		opacity 0.8s ease,
+		translate 0.8s cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.reveal.is-visible {
+	opacity: 1;
+	translate: 0 0;
+}
+
+/* Hero text rises in when the page opens, one line after the other. */
+@keyframes rise-in {
+	from {
+		opacity: 0;
+		translate: 0 24px;
+	}
+}
+.rise-in {
+	animation: rise-in 1s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+
+/* The logo's glow, as a big soft light that slowly "breathes". Purely decoration. */
+@keyframes breathe {
+	50% {
+		scale: 1.15;
+		opacity: 0.55;
+	}
+}
+.aura-glow {
+	pointer-events: none;
+	border-radius: 9999px;
+	background: radial-gradient(
+		circle,
+		color-mix(in oklab, var(--color-mint-400) 70%, transparent) 0%,
+		color-mix(in oklab, var(--color-tertiary-500) 35%, transparent) 45%,
+		transparent 70%
+	);
+	filter: blur(20px);
+	opacity: 0.8;
+	animation: breathe 9s ease-in-out infinite;
+}
+
+/* Big pictures drift a little slower than the page while scrolling (parallax).
+   Uses the browser's own scroll timeline, so no JavaScript; older browsers just show a still picture. */
+@supports (animation-timeline: scroll()) {
+	@keyframes drift {
+		to {
+			translate: 0 18%;
+			scale: 1.06;
+		}
+	}
+	.parallax {
+		animation: drift linear both;
+		animation-timeline: scroll(root);
+		animation-range: 0 100vh;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.rise-in,
+	.aura-glow,
+	.parallax {
+		animation: none;
+	}
 }

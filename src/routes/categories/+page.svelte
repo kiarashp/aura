@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
+	import PageBanner from '$lib/components/PageBanner.svelte';
 	import type { Product } from '@prisma/client';
     import { X } from '@lucide/svelte';
 	import { flip } from 'svelte/animate';
@@ -112,15 +113,13 @@
 	<title>All products | Aura</title>
 </svelte:head>
 
-<div
-	class="defaultPadding relative flex h-[209px] w-full items-end bg-cover bg-bottom pb-[36px]"
-	style="background-image: url('/general/decorative-11.jpg');"
->
-	<span class="bg-primary-950 absolute inset-0 z-0 opacity-30"></span>
-	<h1 class="text-surface-100 bigHeader z-10">All products</h1>
-</div>
+<PageBanner
+	image="/banners/all.webp"
+	title="All products"
+	subtitle="Every piece in the collection, in one place."
+/>
 
-<div class="bg-surface-200 dark:bg-primary-900 defaultPadding flex flex-col sm:flex-row">
+<div class="bg-surface-50 dark:bg-primary-950 defaultPadding mx-auto flex w-full max-w-[1800px] flex-col sm:flex-row">
 	<!-- Filters Sidebar -->
 	<!-- Phone: filters sit above the products. Wider screens: a side panel. -->
 	<div class="w-full pt-[32px] sm:w-1/4 sm:px-2 sm:pt-[48px]">
@@ -238,8 +237,7 @@
 		{#if displayProducts.length > 0}
 			<ProductsGrid
 				products={displayProducts}
-				customClass="grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6"
-				customImageClass="h-auto"
+				customClass="grid-cols-2 xl:grid-cols-3 gap-x-4 gap-y-8 lg:gap-x-6 lg:gap-y-10"
 			/>
 		{:else}
 			<div class="py-12 text-center">

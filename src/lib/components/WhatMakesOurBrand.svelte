@@ -3,6 +3,7 @@
 	import ReceiptText from '@lucide/svelte/icons/receipt-text';
 	import LayoutDashboard from '@lucide/svelte/icons/layout-dashboard';
 	import SlidersHorizontal from '@lucide/svelte/icons/sliders-horizontal';
+	import { reveal } from '$lib/actions/reveal';
 
 	// The four things a visitor can try. Every line here is true of this demo.
 	const features = [
@@ -29,18 +30,31 @@
 	];
 </script>
 
-<!-- what you can try -->
-<div
-	class="text-surface-950 dark:text-surface-200 bg-surface-50 dark:bg-primary-900 defaultPadding flex min-h-[355px] flex-col md:pt-[60px]"
->
-	<h2 class="header w-full lg:text-center">Try the whole shop</h2>
-	<div class="mt-[51px] grid grid-cols-4 gap-x-[8px] gap-y-6 md:gap-x-[20px]">
-		{#each features as feature (feature.title)}
-			<div class="col-span-4 flex flex-col sm:col-span-2 md:col-span-1">
-				<feature.icon size={24} aria-hidden="true" />
-				<h3 class="mt-[16px] text-2xl">{feature.title}</h3>
-				<p class="mt-[8px] text-base">{feature.text}</p>
-			</div>
-		{/each}
+<section id="try" class="bg-surface-50 dark:bg-primary-950 defaultPadding scroll-mt-24 py-20 md:py-28">
+	<div class="mx-auto max-w-[1800px]">
+		<div use:reveal class="max-w-2xl">
+			<p class="text-mint-600 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
+				Made to be tried
+			</p>
+			<h2 class="text-primary-950 dark:text-surface-50 mt-3 text-4xl font-semibold md:text-5xl">
+				Try the whole shop
+			</h2>
+		</div>
+		<div class="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
+			{#each features as feature, i (feature.title)}
+				<div
+					use:reveal={i * 110}
+					class="border-tertiary-300 bg-tertiary-50 hover:border-mint-400 dark:border-primary-800 dark:bg-primary-900/60 dark:hover:border-mint-500 group rounded-2xl border p-6 transition-colors"
+				>
+					<span
+						class="bg-mint-100 text-mint-700 dark:bg-mint-900/60 dark:text-mint-300 grid size-12 place-items-center rounded-full transition-transform duration-500 group-hover:scale-110"
+					>
+						<feature.icon size={22} aria-hidden="true" />
+					</span>
+					<h3 class="text-primary-950 dark:text-surface-50 mt-5 text-xl font-semibold">{feature.title}</h3>
+					<p class="text-surface-900 dark:text-tertiary-400 mt-2 leading-relaxed">{feature.text}</p>
+				</div>
+			{/each}
+		</div>
 	</div>
-</div>
+</section>

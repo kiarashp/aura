@@ -18,21 +18,21 @@
 		btnHeight = 'min-h-[56px]',
 		customClasses = '',
 		variant = 'secondary',
-		rounded= "rounded-sm",
+		rounded = 'rounded-full',
 		children,
 		...restProps
 	}: Props = $props();
 
 	// Base classes that all buttons share
-	const baseClasses = 'cursor-pointer transition duration-300 text-base xl:text-lg touch-manipulation';
+	const baseClasses = 'cursor-pointer font-medium transition duration-300 text-base touch-manipulation disabled:cursor-not-allowed disabled:opacity-60';
 
 	// Variant-specific classes
 	const getVariantClasses = (variant: string) => {
 		switch (variant) {
 			case 'primary':
-				return 'bg-primary-500 hover:bg-primary-800 active:bg-primary-400 dark:bg-primary-400 dark:hover:bg-primary-600 dark:active:bg-primary-300 text-white';
+				return 'bg-primary-500 hover:bg-primary-700 text-white shadow-lg shadow-primary-500/25 dark:bg-mint-400 dark:text-primary-950 dark:hover:bg-mint-300 dark:shadow-mint-400/20';
 			case 'secondary':
-				return 'hover:bg-borderdark text-primary-950 dark:text-surface-900 bg-primary-50 dark:bg-tertiary-400 active:bg-primary-950 active:text-surface-100 dark:hover:bg-tertiary-600 dark:active:bg-tertiary-950';
+				return 'bg-tertiary-200 text-primary-950 hover:bg-tertiary-300 dark:bg-primary-800 dark:text-surface-50 dark:hover:bg-primary-700';
 			case 'outline':
 				return 'border-2 border-primary-500 text-primary-500 hover:bg-primary-500 hover:text-white active:bg-primary-600 dark:border-primary-400 dark:text-primary-400';
 			case 'ghost':
@@ -58,7 +58,7 @@
 			case 'custom':
 				return '';
 			default:
-				return 'hover:bg-borderdark text-primary-950 dark:text-surface-900 bg-primary-50 dark:bg-tertiary-400 active:bg-primary-950 active:text-surface-100 dark:hover:bg-tertiary-600 dark:active:bg-tertiary-950';
+				return 'bg-tertiary-200 text-primary-950 hover:bg-tertiary-300 dark:bg-primary-800 dark:text-surface-50 dark:hover:bg-primary-700';
 		}
 	};
 

@@ -28,7 +28,7 @@
 </svelte:head>
 
 <section
-	class="bg-surface-50 dark:bg-primary-900 defaultPadding flex grow items-center justify-center py-16"
+	class="bg-surface-50 dark:bg-primary-950 defaultPadding flex grow items-center justify-center py-16"
 >
 	<div class="w-full max-w-[460px]">
 		<h1 class="text-primary-950 dark:text-surface-100 bigHeader font-semibold">Sign in</h1>
@@ -54,7 +54,7 @@
 			{#each logins as login (login.action)}
 				<form method="POST" action={login.action}>
 					<button
-						class="border-surface-300 bg-surface-100 hover:border-primary-500 dark:border-primary-700 dark:bg-primary-950 dark:hover:border-primary-300 group flex w-full cursor-pointer items-center gap-4 rounded-sm border px-4 py-4 text-left transition hover:shadow-md"
+						class="border-tertiary-300 bg-tertiary-50/60 hover:border-primary-500 dark:border-primary-700 dark:bg-primary-950 dark:hover:border-primary-300 group flex w-full cursor-pointer items-center gap-4 rounded-sm border px-4 py-4 text-left transition hover:shadow-md"
 					>
 						<span
 							class="bg-primary-500 dark:bg-primary-400 grid size-10 shrink-0 place-items-center rounded-sm text-white"

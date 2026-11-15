@@ -21,7 +21,6 @@
 <MessagePage
 	title="Payment successful"
 	message="Thank you! This is a demo shop, so the test payment went through but nothing will be shipped."
-	image="/general/simple-chair-5.webp"
 >
 	{#if data.savedToAccount}
 		<a href="/account" class={linkButton}>See my orders</a>

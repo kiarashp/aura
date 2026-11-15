@@ -1,6 +1,7 @@
 <script lang="ts">
 	import SignedInBar from '$lib/components/SignedInBar.svelte';
 	import { formatDate, formatPrice } from '$lib/format';
+	import { smallImage } from '$lib/images';
 
 	let { data } = $props();
 
@@ -16,8 +17,8 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<div class="bg-surface-50 dark:bg-primary-900 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]">
-	<h1 class="text-primary-800 dark:text-primary-200 bigHeader">Admin</h1>
+<div class="bg-surface-50 dark:bg-primary-950 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]">
+	<h1 class="text-primary-950 dark:text-surface-50 bigHeader font-semibold">Admin</h1>
 	<SignedInBar
 		who="the demo admin"
 		note="Read-only: you can look at everything, but nothing here can be changed."
@@ -25,7 +26,7 @@
 
 	<div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
 		{#each stats as stat (stat.label)}
-			<div class="border-surface-300 dark:border-primary-700 rounded-sm border p-5">
+			<div class="border-tertiary-300 bg-tertiary-50/60 dark:border-primary-700 rounded-sm border p-5">
 				<p class="text-surface-800 dark:text-surface-300 text-sm">{stat.label}</p>
 				<p class="text-primary-950 dark:text-surface-100 mt-1 text-2xl font-semibold">{stat.value}</p>
 			</div>
@@ -78,7 +79,7 @@
 					<tr class="border-surface-200 dark:border-primary-800 border-b">
 						<td class="py-2 pe-4">
 							<a href="/products/{product.id}" class="flex items-center gap-3 hover:underline">
-								<img src={product.imageUrl} alt="" class="size-10 shrink-0 object-contain" loading="lazy" />
+								<img src={smallImage(product.imageUrl)} alt="" class="size-10 shrink-0 rounded-md object-cover" loading="lazy" />
 								{product.name}
 							</a>
 						</td>

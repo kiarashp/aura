@@ -37,7 +37,7 @@
 	class="group flex cursor-pointer items-center gap-2 rounded-full p-1"
 >
 	<span
-		class="bg-surface-300 dark:bg-primary-500 relative h-6 w-11 rounded-full transition-colors
+		class="bg-tertiary-300 dark:bg-primary-500 relative h-6 w-11 rounded-full transition-colors
 		group-focus-visible:ring-primary-400 group-focus-visible:ring-2"
 	>
 		<span

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '../app.css';
+	import '@fontsource-variable/fraunces';
 	import { onMount } from 'svelte';
 	import Header from '$lib/components/Header.svelte';
 	import Footer from '$lib/components/Footer.svelte';
@@ -21,7 +22,7 @@
 	/>
 </svelte:head>
 
-<div class="mx-auto flex min-h-screen max-w-[1800px] flex-col">
+<div class="bg-surface-50 dark:bg-primary-950 flex min-h-screen flex-col">
 	<DemoBanner />
 	<Header allCategories={data.allCategories} />
 	<main class="flex grow flex-col">

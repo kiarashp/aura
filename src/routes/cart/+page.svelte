@@ -2,6 +2,7 @@
 	import { getCart } from '$lib/components/CartProducts.svelte';
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import { formatPrice } from '$lib/format';
+	import { smallImage } from '$lib/images';
 	import { linkButton } from '$lib/ui';
 
 	const { data } = $props();
@@ -52,9 +53,9 @@
 </svelte:head>
 
 <div
-	class="bg-surface-50 dark:bg-primary-900 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]"
+	class="bg-surface-50 dark:bg-primary-950 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]"
 >
-	<h1 class="text-primary-800 dark:text-primary-200 bigHeader">Your shopping cart</h1>
+	<h1 class="text-primary-950 dark:text-surface-50 bigHeader font-semibold">Your shopping cart</h1>
 
 	{#if !cart.loaded}
 		<!-- Reading the saved cart; takes a split second. -->
@@ -79,7 +80,7 @@
 			{#each cart.cartProducts as cartItem (cartItem.product.id)}
 				<div class="col-span-12 mt-[20px]"></div>
 				<a href="/products/{cartItem.product.id}" class="col-span-2">
-					<img src={cartItem.product.imageUrl} alt={cartItem.product.name} />
+					<img src={smallImage(cartItem.product.imageUrl)} alt={cartItem.product.name} class="aspect-square w-full rounded-xl object-cover" />
 				</a>
 				<div class="col-span-4 flex flex-col gap-[8px]">
 					<a

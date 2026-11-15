@@ -38,7 +38,7 @@
 			"width": 200,
 			"depth": 90,
 			"featured": false,
-			"imageUrl": "/products/Harmony-Fabric-Sofa.jpg",
+			"imageUrl": "/products/harmony-fabric-sofa.webp",
 			"category_id": 1
 		},
 		{
@@ -57,7 +57,7 @@
 			"width": 65,
 			"depth": 70,
 			"featured": false,
-			"imageUrl": "/products/Nordic-Oak-Accent-Chair.jpg",
+			"imageUrl": "/products/nordic-oak-accent-chair.webp",
 			"category_id": 1
 		},
 		{
@@ -76,7 +76,7 @@
 			"width": 50,
 			"depth": 50,
 			"featured": false,
-			"imageUrl": "/products/Plush-Velvet-Ottoman.jpg",
+			"imageUrl": "/products/plush-velvet-ottoman.webp",
 			"category_id": 1
 		},
 		{
@@ -95,7 +95,7 @@
 			"width": 120,
 			"depth": 60,
 			"featured": false,
-			"imageUrl": "/products/Loft-Coffee-Table-with-Storage.jpg",
+			"imageUrl": "/products/loft-coffee-table-with-storage.webp",
 			"category_id": 2
 		},
 		{
@@ -114,7 +114,7 @@
 			"width": 100,
 			"depth": 100,
 			"featured": false,
-			"imageUrl": "/products/Round-Glass-Dining-Table.jpg",
+			"imageUrl": "/products/round-glass-dining-table.webp",
 			"category_id": 2
 		},
 		{
@@ -133,7 +133,7 @@
 			"width": 90,
 			"depth": 30,
 			"featured": false,
-			"imageUrl": "/products/Grande-Bookcase-with-Adjustable-Shelves.jpg",
+			"imageUrl": "/products/grande-bookcase-with-adjustable-shelves.webp",
 			"category_id": 3
 		},
 		{
@@ -152,7 +152,7 @@
 			"width": 140,
 			"depth": 45,
 			"featured": false,
-			"imageUrl": "/products/Countryside-Dresser-with-6-Drawers.jpg",
+			"imageUrl": "/products/countryside-dresser-with-6-drawers.webp",
 			"category_id": 3
 		},
 		{
@@ -171,7 +171,7 @@
 			"width": 60,
 			"depth": 25,
 			"featured": false,
-			"imageUrl": "/products/Compact-Entryway-Shoe-Cabinet.jpg",
+			"imageUrl": "/products/compact-entryway-shoe-cabinet.webp",
 			"category_id": 3
 		},
 		{
@@ -190,7 +190,7 @@
 			"width": 120,
 			"depth": 60,
 			"featured": false,
-			"imageUrl": "/products/Modern-Mirrored-Wardrobe.jpg",
+			"imageUrl": "/products/modern-mirrored-wardrobe.webp",
 			"category_id": 3
 		},
 		{
@@ -209,7 +209,7 @@
 			"width": 160,
 			"depth": 210,
 			"featured": false,
-			"imageUrl": "/products/Cloud-Nine-Platform-Bed-Frame.jpg",
+			"imageUrl": "/products/cloud-nine-platform-bed-frame.webp",
 			"category_id": 4
 		},
 		{
@@ -228,7 +228,7 @@
 			"width": 190,
 			"depth": 220,
 			"featured": false,
-			"imageUrl": "/products/Royal-Velvet-Tufted-Bed.jpg",
+			"imageUrl": "/products/royal-velvet-tufted-bed.webp",
 			"category_id": 4
 		},
 		{
@@ -247,7 +247,7 @@
 			"width": 98,
 			"depth": 200,
 			"featured": false,
-			"imageUrl": "/products/Kids-Adventure-Bunk-Bed-with-Desk.jpg",
+			"imageUrl": "/products/kids-adventure-bunk-bed-with-desk.webp",
 			"category_id": 4
 		},
 		{
@@ -266,7 +266,7 @@
 			"width": 90,
 			"depth": 190,
 			"featured": false,
-			"imageUrl": "/products/Minimalist-Metal-Bed-Frame.jpg",
+			"imageUrl": "/products/minimalist-metal-bed-frame.webp",
 			"category_id": 4
 		}
 	]

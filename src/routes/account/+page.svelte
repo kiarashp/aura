@@ -11,8 +11,8 @@
 	<meta name="robots" content="noindex" />
 </svelte:head>
 
-<div class="bg-surface-50 dark:bg-primary-900 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]">
-	<h1 class="text-primary-800 dark:text-primary-200 bigHeader">My orders</h1>
+<div class="bg-surface-50 dark:bg-primary-950 w-full grow px-[25px] pb-[48px] pt-[64px] md:px-[80px] lg:px-[150px]">
+	<h1 class="text-primary-950 dark:text-surface-50 bigHeader font-semibold">My orders</h1>
 	<SignedInBar
 		who="the demo customer"
 		note="Everyone who clicks “Try as a customer” shares this login, so you may see their test orders too."
@@ -26,7 +26,7 @@
 	{:else}
 		<ul class="mt-12 flex flex-col gap-6">
 			{#each data.orders as order (order.id)}
-				<li class="border-surface-300 dark:border-primary-700 rounded-sm border p-5">
+				<li class="border-tertiary-300 bg-tertiary-50/60 dark:border-primary-700 rounded-sm border p-5">
 					<div class="flex flex-wrap items-baseline justify-between gap-2">
 						<p class="text-primary-950 dark:text-surface-100 font-medium">
 							Order #{order.id} · {formatDate(order.createdAt)}

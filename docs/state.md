@@ -47,6 +47,19 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - Shop text rewritten (Kia asked): no fake company facts. Home: new tagline "Quiet furniture for
      everyday rooms", "Try the whole shop" (4 true features), "Behind Aura" (portfolio + tech).
      About: "The shop" + "How it's built", with links to the demo logins and the GitHub code.
+4b. **DONE** — redesign (Kia asked, 15 Nov 2026), tested light/dark, phone/desktop, Lighthouse 100 ×4:
+   - Logo "Halo" (Kia picked A of 3): `src/lib/components/brand/` (LogoMark + Logo), `static/favicon.svg`,
+     `favicon.png`, `apple-touch-icon.png`. Brand font Fraunces (self-hosted, `@fontsource-variable/fraunces`)
+     for the logo and all h1/h2. New colour scale `mint-50…900` (`#83a9ac` = 400) in `src/app.css`.
+   - All pictures replaced by one AI-made set (fal.ai, FLUX 1.1 pro ultra, $1.32 of Kia's €2–3 budget):
+     13 products, home background, 5 category banners, 2 About pictures. Each is WebP in two sizes
+     (`name.webp` + `name-sm.webp`, helpers in `src/lib/images.ts`). Full-size originals: `design/originals/`
+     (git-ignored, local only).
+   - New header (logo, pill menu, cart count, phone slide-in menu), footer (dark purple in both modes),
+     home hero with parallax and a "breathing" glow, `PageBanner` on category pages, rounded product cards,
+     scroll-in effect (`src/lib/actions/reveal.ts`), message pages show the glowing logo.
+   - Dark-mode switch blink fixed: it now reads the `dark` class set before the first paint.
+   - Still open: a video background (Kia must OK any fal.ai video first; ~$0.25–0.70 for 5 s).
 5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
    Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
    `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,
@@ -63,9 +76,7 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
 
 ## Not judged by Kia yet
 
-- The look of the new error / payment pages, the demo banner, the footer's "About this shop" column,
-  and the new sign-in, My orders and Admin pages.
-  Kia hasn't seen the site since the fixes.
+- The finished redesign as a whole (Kia saw the logo options and the 3 test pictures, not the built pages).
 
 ## How to run and test
 

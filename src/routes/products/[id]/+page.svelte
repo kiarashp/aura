@@ -4,6 +4,7 @@
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import { formatPrice } from '$lib/format';
+	import { imageSet } from '$lib/images';
 
 	let cart = getCart();
 
@@ -28,14 +29,21 @@
 	<meta name="description" content={data.product.description ?? data.product.name} />
 </svelte:head>
 
-<div class="bg-surface-50 dark:bg-primary-900 grid grid-cols-2 lg:pr-[80px]">
+<div class="bg-surface-50 dark:bg-primary-950 grid grid-cols-2 lg:pr-[80px]">
 	<div class="col-span-2 lg:col-span-1 aspect-square">
-		<img src={data.product.imageUrl} alt={data.product.name} class="h-full w-full object-cover" />
+		<img
+			src={data.product.imageUrl}
+			srcset={imageSet(data.product.imageUrl)}
+			sizes="(min-width: 1024px) 50vw, 100vw"
+			alt={data.product.name}
+			fetchpriority="high"
+			class="h-full w-full object-cover"
+		/>
 	</div>
 	<div
 		class="col-span-2 flex flex-col px-[25px] py-[55px] md:px-[80px] lg:col-span-1 lg:px-0 lg:pl-[80px]"
 	>
-		<h1 class="header font-bold lg:mt-[91px]">{data.product.name}</h1>
+		<h1 class="text-primary-950 dark:text-surface-50 text-4xl font-semibold lg:mt-[91px]">{data.product.name}</h1>
 		<p class="mt-[13px] text-xl font-semibold">{formatPrice(data.product.price)}</p>
 		<p class="mt-[54px] text-lg font-semibold">Description</p>
 		<p class="smalltext mt-[16px]">{data.product.description}</p>
@@ -61,7 +69,7 @@
 			<!-- amount -->
 			<p class="text-lg font-semibold col-span-6 lg:col-span-3">Amount:</p>
 			<div
-				class="bg-tertiary-100 dark:bg-tertiary-contrast-100 flex justify-self-end lg:justify-self-auto col-span-6 w-full max-w-[200px] lg:col-span-5"
+				class="bg-tertiary-100 dark:bg-primary-800 flex h-12 justify-self-end overflow-hidden rounded-full lg:justify-self-auto col-span-6 w-full max-w-[200px] lg:col-span-5"
 			>
 				<button
 					onclick={decreaseAmount}
@@ -102,10 +110,10 @@
 </div>
 <!-- related products -->
 {#if data.relatedProducts.length > 0}
-	<div class="bg-surface-400 dark:bg-primary-800 flex w-full flex-col defaultPadding py-7">
-		<div class="text-surface-900 dark:text-surface-500 header">You might also like</div>
+	<div class="bg-tertiary-100 dark:bg-primary-900 flex w-full flex-col defaultPadding py-14">
+		<h2 class="text-primary-950 dark:text-surface-50 text-3xl font-semibold">You might also like</h2>
 		<ProductsGrid
-			customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6 mt-[33px]"
+			customClass="grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-8 lg:gap-6 mt-8"
 			products={data.relatedProducts}
 		/>
 	</div>

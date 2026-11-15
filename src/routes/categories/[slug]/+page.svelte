@@ -1,6 +1,8 @@
 <script lang="ts">
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
+	import PageBanner from '$lib/components/PageBanner.svelte';
+	import { categoryBanner, categoryLine } from '$lib/images';
 
 	const { data } = $props();
 	const FIRST_PAGE = 6;
@@ -18,19 +20,17 @@
 	<meta name="description" content="Browse {data.category.name.toLowerCase()} at Aura." />
 </svelte:head>
 
-<div
-	class="defaultPadding relative flex h-[209px] w-full items-end bg-cover bg-bottom pb-[36px]"
-	style="background-image: url('/general/decorative-11.jpg');"
->
-	<span class="bg-primary-950 absolute inset-0 z-0 opacity-30"></span>
-	<h1 class="text-surface-100 bigHeader z-10">{data.category.name}</h1>
-</div>
+<PageBanner
+	image={categoryBanner(data.category.slug)}
+	title={data.category.name}
+	subtitle={categoryLine(data.category.slug)}
+/>
 
-<div class="bg-surface-50 dark:bg-primary-900 defaultPadding flex grow flex-col py-[80px]">
+<div class="bg-surface-50 dark:bg-primary-950 defaultPadding flex grow flex-col py-14 md:py-20">
 	{#if products.length === 0}
 		<p class="subheader text-center">There are no products in this category yet.</p>
 	{:else}
-		<ProductsGrid customClass="grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 lg:gap-6" {products} />
+		<ProductsGrid customClass="mx-auto w-full max-w-[1800px] grid-cols-2 lg:grid-cols-3 gap-x-4 gap-y-8 lg:gap-x-6 lg:gap-y-10" {products} />
 	{/if}
 	{#if !showAll && data.category.products.length > FIRST_PAGE}
 		<div class="mt-[35px] flex items-center justify-center">

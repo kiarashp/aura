@@ -59,6 +59,12 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      home hero with parallax and a "breathing" glow, `PageBanner` on category pages, rounded product cards,
      scroll-in effect (`src/lib/actions/reveal.ts`), message pages show the glowing logo.
    - Dark-mode switch blink fixed: it now reads the `dark` class set before the first paint.
+   - **NEXT (do first):** video 1 is INVISIBLE (max pixel change 9/255: fixed camera + same end frame).
+     Kia OK'd and paid for video 2: `design/originals/hero-video-2.mp4` (Kling, slow dolly-in, motion
+     measured OK). To do: boomerang loop (forward + reversed), compress to `static/banners/home.webm` +
+     `home.mp4` (same names, no code change), rebuild, and check in a browser that motion is visible.
+     ffmpeg: `pnpm add @ffmpeg-installer/ffmpeg` in a scratch folder. fal.ai total now **$2.02** (budget €2–3:
+     ask Kia before ANY more fal.ai use).
    - Home video (Kia OK'd): 5 s Kling 2.5 Turbo Pro loop from the home picture, $0.35 → fal.ai total
      **$1.67**. `static/banners/home.webm` (61 KB) + `.mp4` (347 KB); plays on screens ≥768 px only, and
      not with "reduce motion". Original in `design/originals/hero-video.mp4`.

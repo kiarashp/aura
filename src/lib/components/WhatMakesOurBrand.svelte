@@ -33,7 +33,7 @@
 <section id="try" class="bg-surface-50 dark:bg-primary-950 defaultPadding scroll-mt-24 py-20 md:py-28">
 	<div class="mx-auto max-w-[1800px]">
 		<div use:reveal class="max-w-2xl">
-			<p class="text-mint-600 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
+			<p class="text-mint-700 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
 				Made to be tried
 			</p>
 			<h2 class="text-primary-950 dark:text-surface-50 mt-3 text-4xl font-semibold md:text-5xl">

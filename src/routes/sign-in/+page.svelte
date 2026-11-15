@@ -47,7 +47,7 @@
 			</p>
 		{/if}
 
-		<p class="text-primary-700 dark:text-primary-300 mt-8 text-xs font-semibold uppercase tracking-widest">
+		<p class="text-primary-700 dark:text-mint-300 mt-8 text-xs font-semibold uppercase tracking-widest">
 			Demo · no sign-up needed
 		</p>
 		<div class="mt-3 grid gap-3">
@@ -63,7 +63,7 @@
 						</span>
 						<span class="min-w-0">
 							<span class="text-primary-950 dark:text-surface-100 block font-medium">{login.title}</span>
-							<span class="text-surface-800 dark:text-surface-300 block text-sm">{login.text}</span>
+							<span class="text-surface-900 dark:text-tertiary-400 block text-sm">{login.text}</span>
 						</span>
 						<ArrowRight
 							size={18}

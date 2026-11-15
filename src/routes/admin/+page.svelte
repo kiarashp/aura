@@ -26,8 +26,8 @@
 
 	<div class="mt-10 grid grid-cols-1 gap-4 sm:grid-cols-3">
 		{#each stats as stat (stat.label)}
-			<div class="border-tertiary-300 bg-tertiary-50/60 dark:border-primary-700 rounded-sm border p-5">
-				<p class="text-surface-800 dark:text-surface-300 text-sm">{stat.label}</p>
+			<div class="border-tertiary-300 bg-tertiary-50/60 dark:bg-primary-900/50 dark:border-primary-700 rounded-sm border p-5">
+				<p class="text-surface-900 dark:text-tertiary-400 text-sm">{stat.label}</p>
 				<p class="text-primary-950 dark:text-surface-100 mt-1 text-2xl font-semibold">{stat.value}</p>
 			</div>
 		{/each}

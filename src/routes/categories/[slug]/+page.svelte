@@ -27,6 +27,7 @@
 />
 
 <div class="bg-surface-50 dark:bg-primary-950 defaultPadding flex grow flex-col py-14 md:py-20">
+	<h2 class="sr-only">Products</h2>
 	{#if products.length === 0}
 		<p class="subheader text-center">There are no products in this category yet.</p>
 	{:else}

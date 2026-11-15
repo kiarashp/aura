@@ -14,7 +14,7 @@
 {#snippet sectionHead(eyebrow: string, title: string)}
 	<div use:reveal class="flex items-end justify-between gap-6">
 		<div>
-			<p class="text-mint-600 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
+			<p class="text-mint-700 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
 				{eyebrow}
 			</p>
 			<h2 class="text-primary-950 dark:text-surface-50 mt-3 text-4xl font-semibold md:text-5xl">{title}</h2>

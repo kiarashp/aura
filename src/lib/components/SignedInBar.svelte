@@ -12,7 +12,7 @@
 >
 	<div>
 		<p class="text-primary-950 dark:text-surface-100 font-medium">Signed in as {who}</p>
-		<p class="text-surface-800 dark:text-surface-300 text-sm">{note}</p>
+		<p class="text-surface-900 dark:text-tertiary-400 text-sm">{note}</p>
 	</div>
 	<form method="POST" action="/sign-out">
 		<button

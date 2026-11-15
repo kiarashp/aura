@@ -126,11 +126,11 @@
 		<div class="grid grid-cols-2 gap-x-4 pl-1 sm:sticky sm:top-[110px] sm:flex sm:max-h-[calc(100vh-80px)] sm:flex-col sm:items-start sm:overflow-y-auto sm:pb-[50px] lg:static lg:max-h-max">
 			<!-- Filter Header -->
 			<div class="col-span-2 mt-4 w-full flex-col items-center justify-between">
-				<h3 class="smallHeader font-semibold">Filters</h3>
+				<h2 class="smallHeader font-semibold">Filters</h2>
 				{#if totalFiltersActive > 0}
 					<button
 						onclick={clearAllFilters}
-						class="text-secondary-600 hover:text-secondary-700 text-sm underline"
+						class="text-primary-700 hover:text-primary-500 dark:text-mint-300 dark:hover:text-mint-200 cursor-pointer text-sm underline"
 					>
 						Clear all ({totalFiltersActive})
 					</button>
@@ -148,14 +148,14 @@
 				<div class="mt-2 flex flex-col gap-[13px]">
 					{#each data.categories as category (category.name)}
 						<label
-							class="hover:text-secondary-700 smalltext flex cursor-pointer select-none items-center gap-2"
+							class="hover:text-primary-500 dark:hover:text-mint-300 smalltext flex cursor-pointer select-none items-center gap-2"
 						>
 							<input
 								type="checkbox"
 								name={category.name}
 								onchange={handleCategoryFilter}
 								checked={selectedCategories.has(category.name)}
-								class="rounded border-gray-300"
+								class="text-primary-500 border-tertiary-500 dark:bg-primary-900 dark:border-primary-600 dark:checked:bg-mint-500 focus:ring-primary-400 size-4 cursor-pointer rounded"
 							/>
 							<span class="grow">{category.name}</span>
 							<!-- Optional: Show count of products in category -->
@@ -173,14 +173,14 @@
 				<div class="mt-2 flex flex-col gap-[13px]">
 					{#each priceRanges as range (range.value)}
 						<label
-							class="hover:text-secondary-700 flex cursor-pointer select-none items-center gap-2 smalltext"
+							class="hover:text-primary-500 dark:hover:text-mint-300 flex cursor-pointer select-none items-center gap-2 smalltext"
 						>
 							<input
 								type="checkbox"
 								name={range.value}
 								onchange={handlePriceFilter}
 								checked={selectedPriceRanges.has(range.value)}
-								class="rounded border-gray-300"
+								class="text-primary-500 border-tertiary-500 dark:bg-primary-900 dark:border-primary-600 dark:checked:bg-mint-500 focus:ring-primary-400 size-4 cursor-pointer rounded"
 							/>
 							<span>{range.label}</span>
 						</label>
@@ -192,47 +192,50 @@
 
 	<!-- Products Display -->
 	<div class="w-full py-[24px] sm:mt-[33px] sm:w-3/4 sm:py-[36px]">
-		<!-- Active Filters Display -->
+		<!-- Active filters: one chip per filter, each with its own remove button -->
 		{#if totalFiltersActive > 0}
-			<div class="mb-6 lg:flex flex-wrap gap-2 hidden ">
-				{#each Array.from(selectedCategories) as category}
+			<div class="mb-6 flex flex-wrap gap-2">
+				{#each Array.from(selectedCategories) as category (category)}
 					<span
-						class="bg-secondary-100 dark:bg-secondary-600 dark:text-surface-950 inline-flex items-center gap-1 rounded-full px-3 py-1 text-sm"
-					
-                        >
+						class="bg-mint-100 text-mint-900 dark:bg-mint-900/60 dark:text-mint-100 inline-flex items-center gap-1 rounded-full py-1 pl-3 pr-1 text-sm font-medium"
+					>
 						{category}
 						<button
+							type="button"
+							aria-label="Remove filter: {category}"
 							onclick={() => {
 								selectedCategories.delete(category);
 								selectedCategories = new Set(selectedCategories);
 							}}
-							class="text-secondary-600 hover:text-secondary-800 ml-1"
-                            
+							class="hover:bg-mint-200 dark:hover:bg-mint-800 grid size-6 cursor-pointer place-items-center rounded-full transition-colors"
 						>
-							<X class="w-3"/>
-                            
+							<X size={14} aria-hidden="true" />
 						</button>
 					</span>
 				{/each}
-
-				{#each Array.from(selectedPriceRanges) as range}
+				{#each Array.from(selectedPriceRanges) as range (range)}
 					{@const rangeLabel = priceRanges.find((r) => r.value === range)?.label}
-					<span class="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-sm">
+					<span
+						class="bg-tertiary-200 text-primary-900 dark:bg-primary-800 dark:text-tertiary-200 inline-flex items-center gap-1 rounded-full py-1 pl-3 pr-1 text-sm font-medium"
+					>
 						{rangeLabel}
 						<button
+							type="button"
+							aria-label="Remove filter: {rangeLabel}"
 							onclick={() => {
 								selectedPriceRanges.delete(range);
 								selectedPriceRanges = new Set(selectedPriceRanges);
 							}}
-							class="ml-1 text-blue-600 hover:text-blue-800"
+							class="hover:bg-tertiary-300 dark:hover:bg-primary-700 grid size-6 cursor-pointer place-items-center rounded-full transition-colors"
 						>
-							×
+							<X size={14} aria-hidden="true" />
 						</button>
 					</span>
 				{/each}
 			</div>
 		{/if}
 
+		<h2 class="sr-only">Products</h2>
 		<!-- Products Grid -->
 		{#if displayProducts.length > 0}
 			<ProductsGrid
@@ -244,7 +247,7 @@
 				<p class="mb-4 smallHeader ">No products found matching your filters.</p>
 				<button
 					onclick={clearAllFilters}
-					class="text-secondary-600 hover:text-secondary-700 underline"
+					class="text-primary-700 hover:text-primary-500 dark:text-mint-300 cursor-pointer underline"
 				>
 					Clear all filters
 				</button>

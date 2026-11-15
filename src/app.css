@@ -170,3 +170,10 @@ h2,
 		animation: none;
 	}
 }
+
+/* A clear ring around whatever has keyboard focus (Tab key), on every button and link. */
+:focus-visible {
+	outline: 2px solid var(--color-mint-500);
+	outline-offset: 3px;
+	border-radius: 6px;
+}

@@ -8,7 +8,7 @@
 <section class="bg-tertiary-100 dark:bg-primary-900 defaultPadding py-20 md:py-28">
 	<div class="mx-auto grid max-w-[1800px] items-center gap-10 lg:grid-cols-2 lg:gap-20">
 		<div use:reveal class="order-2 lg:order-1">
-			<p class="text-mint-600 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
+			<p class="text-mint-700 dark:text-mint-300 text-xs font-semibold uppercase tracking-[0.18em]">
 				Behind Aura
 			</p>
 			<h2 class="text-primary-950 dark:text-surface-50 mt-3 text-4xl font-semibold md:text-5xl">

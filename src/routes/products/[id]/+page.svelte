@@ -1,10 +1,10 @@
 <script>
 	import { getCart } from '$lib/components/CartProducts.svelte.js';
-	import { goto } from '$app/navigation';
 	import ProductsGrid from '$lib/components/ProductsGrid.svelte';
 	import SimpleButton from '$lib/components/SimpleButton.svelte';
 	import { formatPrice } from '$lib/format';
-	import { imageSet } from '$lib/images';
+	import { imageSet, smallImage } from '$lib/images';
+	import { toast } from '$lib/toast.svelte';
 
 	let cart = getCart();
 
@@ -18,9 +18,16 @@
 	function decreaseAmount() {
 		if (amount > 1) amount -= 1;
 	}
+	// Add to the cart and stay on the page: a note pops up with a link to the cart.
 	function handleClickAddToCart() {
 		cart.addToCart(data.product, amount);
-		goto('/cart');
+		toast.show({
+			title: 'Added to cart',
+			text: amount > 1 ? `${amount} × ${data.product.name}` : data.product.name,
+			image: smallImage(data.product.imageUrl),
+			link: { href: '/cart', label: 'View cart' }
+		});
+		amount = 1;
 	}
 </script>
 
@@ -36,6 +43,7 @@
 			srcset={imageSet(data.product.imageUrl)}
 			sizes="(min-width: 1024px) 50vw, 100vw"
 			alt={data.product.name}
+			style:view-transition-name="product-{data.product.id}"
 			fetchpriority="high"
 			class="h-full w-full object-cover"
 		/>

@@ -27,6 +27,7 @@
 			{sizes}
 			alt={product.name}
 			loading="lazy"
+			style:view-transition-name="product-{product.id}"
 			class="h-full w-full object-cover transition-transform duration-700 ease-out group-hover/card:scale-[1.04]"
 		/>
 		{#if product.featured}

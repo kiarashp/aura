@@ -34,6 +34,19 @@
 				: { href: '/sign-in', label: 'Sign in' }
 	);
 
+	// The cart count gives a little bounce whenever something is added (not when the saved cart loads).
+	let bump = $state(false);
+	let lastCount: number | null = null;
+	$effect(() => {
+		const n = cart.itemCount;
+		if (!cart.loaded) return;
+		if (lastCount !== null && n > lastCount) {
+			bump = false;
+			requestAnimationFrame(() => (bump = true));
+		}
+		lastCount = n;
+	});
+
 	// Once the page is scrolled, the header gets a soft shadow and see-through blur.
 	let scrollY = $state(0);
 	const scrolled = $derived(scrollY > 8);
@@ -86,7 +99,8 @@
 				<ShoppingBag size={21} aria-hidden="true" />
 				{#if cart.itemCount > 0}
 					<span
-						class="bg-mint-400 text-primary-950 absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full px-1 text-[11px] font-semibold leading-5"
+						class="bg-mint-400 text-primary-950 absolute -right-0.5 -top-0.5 grid min-w-5 place-items-center rounded-full px-1 text-[11px] font-semibold leading-5 {bump ? 'animate-bump' : ''}"
+						onanimationend={() => (bump = false)}
 						aria-hidden="true">{cart.itemCount}</span
 					>
 				{/if}

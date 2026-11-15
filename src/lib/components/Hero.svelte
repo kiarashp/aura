@@ -3,18 +3,46 @@
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import { imageSet } from '$lib/images';
 	import { linkButton, linkButtonGhost } from '$lib/ui';
+
+	// The quiet looping video (lamp light breathing) only plays on wider screens and when the visitor
+	// has not asked for less motion. Phones keep the still picture and download nothing extra.
+	let playVideo = $state(false);
+	let videoReady = $state(false);
+	$effect(() => {
+		playVideo = matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches;
+	});
 </script>
 
 <!-- The home page opening: a full-width room picture, the headline sits on the empty wall. -->
 <section class="relative isolate flex min-h-[calc(100svh-7rem)] items-center overflow-hidden md:min-h-[86vh]">
-	<img
-		src="/banners/home.webp"
-		srcset={imageSet('/banners/home.webp', 2400)}
-		sizes="100vw"
-		alt=""
-		fetchpriority="high"
-		class="parallax absolute inset-0 -z-20 h-full w-full object-cover object-[80%_50%] md:object-center"
-	/>
+	<div class="parallax absolute inset-0 -z-20">
+		<img
+			src="/banners/home.webp"
+			srcset={imageSet('/banners/home.webp', 2400)}
+			sizes="100vw"
+			alt=""
+			fetchpriority="high"
+			class="h-full w-full object-cover object-[80%_50%] md:object-center"
+		/>
+		{#if playVideo}
+			<!-- Fades in over the still picture once it can play, so there is never a jump. -->
+			<video
+				class="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 {videoReady
+					? 'opacity-100'
+					: 'opacity-0'}"
+				autoplay
+				muted
+				loop
+				playsinline
+				preload="auto"
+				aria-hidden="true"
+				oncanplay={() => (videoReady = true)}
+			>
+				<source src="/banners/home.webm" type="video/webm" />
+				<source src="/banners/home.mp4" type="video/mp4" />
+			</video>
+		{/if}
+	</div>
 	<!-- Fades the picture behind the text so it stays readable (from the top on phones, from the left on wide screens). -->
 	<div
 		class="from-surface-50/90 via-surface-50/45 dark:from-primary-950/95 dark:via-primary-950/70 dark:to-primary-950/25 absolute inset-0 -z-10 bg-gradient-to-b to-transparent md:bg-gradient-to-r"

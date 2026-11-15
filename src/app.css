@@ -177,3 +177,27 @@ h2,
 	outline-offset: 3px;
 	border-radius: 6px;
 }
+
+/* The cart count bounces when something is added (Header.svelte). */
+@keyframes bump {
+	40% {
+		scale: 1.45;
+	}
+}
+.animate-bump {
+	animation: bump 0.45s cubic-bezier(0.3, 1.6, 0.5, 1);
+}
+
+/* Page changes (see +layout.svelte): a quick cross-fade, and product pictures glide into place. */
+::view-transition-old(root),
+::view-transition-new(root) {
+	animation-duration: 220ms;
+}
+::view-transition-group(*) {
+	animation-duration: 450ms;
+	animation-timing-function: cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+/* The header stays put during page changes instead of fading. */
+header {
+	view-transition-name: site-header;
+}

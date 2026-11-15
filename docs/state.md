@@ -59,7 +59,14 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      home hero with parallax and a "breathing" glow, `PageBanner` on category pages, rounded product cards,
      scroll-in effect (`src/lib/actions/reveal.ts`), message pages show the glowing logo.
    - Dark-mode switch blink fixed: it now reads the `dark` class set before the first paint.
-   - Still open: a video background (Kia must OK any fal.ai video first; ~$0.25–0.70 for 5 s).
+   - Home video (Kia OK'd): 5 s Kling 2.5 Turbo Pro loop from the home picture, $0.35 → fal.ai total
+     **$1.67**. `static/banners/home.webm` (61 KB) + `.mp4` (347 KB); plays on screens ≥768 px only, and
+     not with "reduce motion". Original in `design/originals/hero-video.mp4`.
+   - UI review: axe scan of 14 page states × light/dark × phone/desktop went 42 → 0 problems
+     (script idea: Playwright + axe-core, run from a scratch folder, not part of the project).
+   - Extras: page changes cross-fade and product pictures glide card → product page (View Transitions,
+     `onNavigate` in `+layout.svelte`); "Add to cart" stays on the page with a note (`src/lib/toast.svelte.ts`,
+     `Toast.svelte`) and the cart count bounces. Idea not built yet: a search box in the header.
 5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
    Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
    `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,

@@ -1,6 +1,6 @@
 # Aura — where we are
 
-Last updated: 14 Nov 2026 (after step 4).
+Last updated: 23 Nov 2026 (step 5: live on the test address).
 
 Aura is a **portfolio demo shop**, not a real shop: a SvelteKit + Prisma + Stripe furniture store that
 proves Kia can build one. It must look finished and never break while a recruiter clicks around.
@@ -59,12 +59,11 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      home hero with parallax and a "breathing" glow, `PageBanner` on category pages, rounded product cards,
      scroll-in effect (`src/lib/actions/reveal.ts`), message pages show the glowing logo.
    - Dark-mode switch blink fixed: it now reads the `dark` class set before the first paint.
-   - **NEXT (do first):** video 1 is INVISIBLE (max pixel change 9/255: fixed camera + same end frame).
-     Kia OK'd and paid for video 2: `design/originals/hero-video-2.mp4` (Kling, slow dolly-in, motion
-     measured OK). To do: boomerang loop (forward + reversed), compress to `static/banners/home.webm` +
-     `home.mp4` (same names, no code change), rebuild, and check in a browser that motion is visible.
-     ffmpeg: `pnpm add @ffmpeg-installer/ffmpeg` in a scratch folder. fal.ai total now **$2.02** (budget €2–3:
-     ask Kia before ANY more fal.ai use).
+   - Video 1 is nearly INVISIBLE (max pixel change 9/255: fixed camera + same end frame). Kia paid for video 2
+     (Kling, slow dolly-in), but its file `design/originals/hero-video-2.mp4` was **lost** (the whole git-ignored
+     `design/originals/` and `.env` vanished in the Nov 2026 folder moves / Windows restart). Ask Kia: try to
+     download it again from the fal.ai dashboard, or drop the video. fal.ai total **$2.02** (budget €2–3: ask Kia
+     before ANY more fal.ai use). Plan for it: boomerang loop, compress to `static/banners/home.webm` + `home.mp4`.
    - Home video (Kia OK'd): 5 s Kling 2.5 Turbo Pro loop from the home picture, $0.35 → fal.ai total
      **$1.67**. `static/banners/home.webm` (61 KB) + `.mp4` (347 KB); plays on screens ≥768 px only, and
      not with "reduce motion". Original in `design/originals/hero-video.mp4`.
@@ -73,11 +72,21 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - Extras: page changes cross-fade and product pictures glide card → product page (View Transitions,
      `onNavigate` in `+layout.svelte`); "Add to cart" stays on the page with a note (`src/lib/toast.svelte.ts`,
      `Toast.svelte`) and the cart count bounces. Idea not built yet: a search box in the header.
-5. Go live at `aura.kiapmd.dev` on the Netherlands server (read `../_server/CLAUDE.md` first).
-   Copy meditrack's setup: Dockerfile + image built by GitHub Actions. Must set
-   `ORIGIN=https://aura.kiapmd.dev`, or checkout return links break behind Caddy. Env: `DATABASE_URL`,
-   `STRIPEAPIKEY` (a **test** key), and `STRIPE_WEBHOOK_SECRET` after adding a webhook in the Stripe
-   dashboard for `https://aura.kiapmd.dev/api/stripe-webhook`, event `checkout.session.completed`. Then a README with screenshots (today's README is the default one).
+5. **LIVE on the test address https://aura.wp.kiapmd.dev** (23 Nov 2026). Folder moved to
+   `D:KIARASHWORKserverskia-netherlands-vpsaura`. Setup copied from meditrack:
+   - `Dockerfile` (node:24-slim + openssl), `docker/start.sh` (prisma migrate deploy → seed → app),
+     `compose.server.yml` (box `aura-app-1`, 256 MB, ~36 MB used), `deploy/receive-image.sh`, `deploy-hook.sh`,
+     `.github/workflows/deploy.yml` (check + build, then tries the image against a throwaway Postgres, then sends
+     it to the server). A push to `master` = live in ~3 minutes. `prisma` moved to dependencies (needed at start).
+   - Health check: `/healthz` (asks the database `SELECT 1`).
+   - No `ORIGIN`: the app reads its address from Caddy's X-Forwarded-Proto/Host headers (set in the Dockerfile),
+     so it works on any address. Tested: pages, 404, demo logins, checkout reaches Stripe.
+   - Database: the server's shared Postgres (database + login `aura`), no longer Neon. Server `.env` in
+     `/srv/aura/.env` has DATABASE_URL, STRIPEAPIKEY (test key, from the old `svelte-ecommerce/.env`), API_VERSION.
+   - **NEXT:** Kia adds a Porkbun DNS A record `aura` → 85.31.148.209. Then in the server repo's Caddyfile: serve
+     `aura.kiapmd.dev` and make `aura.wp.kiapmd.dev` redirect to it. Optional: Stripe webhook for
+     `https://aura.kiapmd.dev/api/stripe-webhook` (event `checkout.session.completed`) → `STRIPE_WEBHOOK_SECRET`
+     in the server .env. Then a README with screenshots (today's README is the default one).
 
 ## Decisions Kia made
 
@@ -96,7 +105,7 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
 - Dev: `pnpm dev`. Checks: `pnpm check` (0 errors now) and `pnpm build`.
 - Built site: `PORT=4321 ORIGIN=http://localhost:4321 node --env-file=.env build`.
   Stop it before building again: on Windows the running server locks `build/` and the build fails.
-- `.env` (never committed) holds `DATABASE_URL` (today a Neon cloud Postgres), `STRIPEAPIKEY`,
+- `.env` (never committed; **lost Nov 2026**, make a new one from `.env.example`) holds `DATABASE_URL`, `STRIPEAPIKEY`,
   `API_VERSION`. See `.env.example`. `HOSTNAME` is no longer used: Docker overwrites it.
 
 ## Traps

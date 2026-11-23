@@ -78,9 +78,12 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      so it works on any address. Tested: pages, 404, demo logins, checkout reaches Stripe.
    - Database: the server's shared Postgres (database + login `aura`), no longer Neon. Server `.env` in
      `/srv/aura/.env` has DATABASE_URL, STRIPEAPIKEY (test key, from the old `svelte-ecommerce/.env`), API_VERSION.
-   - **NEXT (optional):** Stripe webhook for
-     `https://aura.kiapmd.dev/api/stripe-webhook` (event `checkout.session.completed`) → `STRIPE_WEBHOOK_SECRET`
-     in the server .env. Then a README with screenshots (today's README is the default one).
+   - Stripe webhook made 23 Nov 2026 through Stripe's API (test mode, id `we_1UezlgHkZSwZ0RnGJDUDtjmC`,
+     event `checkout.session.completed`, URL `https://aura.kiapmd.dev/api/stripe-webhook`). Its secret is
+     `STRIPE_WEBHOOK_SECRET` in the server .env. Tested: signed message 200, wrong signature 400.
+   - README rewritten with 6 screenshots of the live site (`docs/screenshots/`, taken with Playwright +
+     private Chrome; script idea: viewport 1440×900, colorScheme light/dark, reducedMotion "reduce").
+   - Ideas not built: a search box in the header.
 
 ## Decisions Kia made
 

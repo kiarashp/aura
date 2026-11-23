@@ -3,14 +3,6 @@
 	import ChevronDown from '@lucide/svelte/icons/chevron-down';
 	import { imageSet } from '$lib/images';
 	import { linkButton, linkButtonGhost } from '$lib/ui';
-
-	// The quiet looping video (lamp light breathing) only plays on wider screens and when the visitor
-	// has not asked for less motion. Phones keep the still picture and download nothing extra.
-	let playVideo = $state(false);
-	let videoReady = $state(false);
-	$effect(() => {
-		playVideo = matchMedia('(min-width: 768px) and (prefers-reduced-motion: no-preference)').matches;
-	});
 </script>
 
 <!-- The home page opening: a full-width room picture, the headline sits on the empty wall. -->
@@ -24,24 +16,6 @@
 			fetchpriority="high"
 			class="h-full w-full object-cover object-[80%_50%] md:object-center"
 		/>
-		{#if playVideo}
-			<!-- Fades in over the still picture once it can play, so there is never a jump. -->
-			<video
-				class="absolute inset-0 h-full w-full object-cover transition-opacity duration-1000 {videoReady
-					? 'opacity-100'
-					: 'opacity-0'}"
-				autoplay
-				muted
-				loop
-				playsinline
-				preload="auto"
-				aria-hidden="true"
-				oncanplay={() => (videoReady = true)}
-			>
-				<source src="/banners/home.webm" type="video/webm" />
-				<source src="/banners/home.mp4" type="video/mp4" />
-			</video>
-		{/if}
 	</div>
 	<!-- Fades the picture behind the text so it stays readable (from the top on phones, from the left on wide screens). -->
 	<div

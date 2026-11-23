@@ -1,0 +1,84 @@
+# Check the app, build it on GitHub and put it on Kia's server. See the server project's docs/server.md.
+# GitHub Actions = GitHub's build robots (free for public repos).
+# The image goes straight to the server over SSH, NOT through GitHub's image storage (ghcr).
+name: Test and deploy
+
+on:
+  push:
+    branches: [master]
+    # Notes do not change the app: no build for them.
+    paths-ignore: ['docs/**', '**/*.md', '.claude/**']
+  pull_request:
+  workflow_dispatch: # a "Run workflow" button on GitHub, to deploy by hand
+
+# Two pushes close together: the older run is stopped, only the newest gets deployed.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      # The build makes Prisma's database code first, which the check needs.
+      - run: pnpm build
+      - run: pnpm check
+
+  deploy:
+    # Only after the checks pass, and only for pushes to master (not for pull requests).
+    needs: test
+    if: github.event_name != 'pull_request' && github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: docker/setup-buildx-action@v3
+
+      # Build the image. The cache (kept on GitHub) skips the slow installs when only code changed.
+      - uses: docker/build-push-action@v6
+        with:
+          context: .
+          load: true
+          tags: aura:${{ github.sha }}
+          cache-from: type=gha
+          cache-to: type=gha,mode=max
+
+      # Start the finished image next to a throwaway database, the way the server runs it, and check that
+      # it fills the database and shows pages. A broken image never reaches the server.
+      - name: Try the image
+        run: |
+          docker network create t
+          docker run -d --name db --network t -e POSTGRES_PASSWORD=test -e POSTGRES_DB=aura postgres:18
+          for i in $(seq 30); do docker exec db pg_isready -U postgres && break; sleep 1; done
+          docker run -d --name app --network t -p 3000:3000 --read-only --tmpfs /tmp \
+            -e DATABASE_URL=postgresql://postgres:test@db:5432/aura -e STRIPEAPIKEY=sk_test_fake \
+            aura:${{ github.sha }}
+          ok=""
+          for i in $(seq 60); do curl -sf http://localhost:3000/healthz && ok=1 && break; sleep 2; done
+          [ -n "$ok" ] || { docker logs app; exit 1; }
+          curl -sf http://localhost:3000/ -o /dev/null
+          curl -sf http://localhost:3000/products/1 | grep -q '<h1' || { docker logs app; exit 1; }
+          echo "Image works."
+
+      # Send it to the server. The key in DEPLOY_SSH_KEY can only run deploy/receive-image.sh there.
+      # DEPLOY_KNOWN_HOSTS = the server's own ID, so we never send to an impostor.
+      - name: Copy the image to the server and start it
+        env:
+          SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+          KNOWN_HOSTS: ${{ secrets.DEPLOY_KNOWN_HOSTS }}
+        run: |
+          if [ -z "$SSH_KEY" ]; then echo "No DEPLOY_SSH_KEY secret yet: skipping the deploy."; exit 0; fi
+          install -m 700 -d ~/.ssh
+          printf '%s\n' "$SSH_KEY" > ~/.ssh/deploy && chmod 600 ~/.ssh/deploy
+          printf '%s\n' "$KNOWN_HOSTS" > ~/.ssh/known_hosts
+          docker save "aura:${{ github.sha }}" | gzip \
+            | ssh -i ~/.ssh/deploy -o IdentitiesOnly=yes claude@85.31.148.209 "${{ github.sha }}"

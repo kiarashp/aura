@@ -1,0 +1,33 @@
+# How the app runs on Kia's server (in /srv/aura). See the server project's docs/server.md.
+# The image "aura:live" is NOT built here: GitHub Actions builds it and copies it in (deploy/receive-image.sh).
+name: aura
+
+services:
+  app:
+    image: aura:live
+    pull_policy: never # never look for it online; it only exists on this server
+    restart: unless-stopped # comes back by itself after a crash or a server restart
+    env_file: .env # the secrets; this file exists only on the server (owner claude, 600)
+    networks:
+      web:
+        aliases: [aura] # Caddy reaches the app at aura:3000
+    # Hard limits, so a crash or a leak in this app can't starve the other sites on the server.
+    mem_limit: 256m
+    cpus: 0.5
+    pids_limit: 100
+    read_only: true # the box can only write to /tmp
+    tmpfs: [/tmp]
+    security_opt: [no-new-privileges:true]
+    cap_drop: [ALL]
+    healthcheck:
+      test: ['CMD', 'wget', '-qO-', 'http://127.0.0.1:3000/healthz']
+      interval: 30s
+      timeout: 5s
+      start_period: 30s
+      retries: 3
+    # No "ports:" on purpose: Docker would open them to the internet past the firewall. Only Caddy is reachable.
+
+networks:
+  web:
+    name: kp-web
+    external: true # made by the server project (kp-server); Caddy and Postgres are on it too

@@ -1,6 +1,6 @@
 # Aura — where we are
 
-Last updated: 23 Nov 2026 (step 5: live on the test address).
+Last updated: 23 Nov 2026 (step 5: live on aura.kiapmd.dev).
 
 Aura is a **portfolio demo shop**, not a real shop: a SvelteKit + Prisma + Stripe furniture store that
 proves Kia can build one. It must look finished and never break while a recruiter clicks around.
@@ -67,7 +67,7 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - Extras: page changes cross-fade and product pictures glide card → product page (View Transitions,
      `onNavigate` in `+layout.svelte`); "Add to cart" stays on the page with a note (`src/lib/toast.svelte.ts`,
      `Toast.svelte`) and the cart count bounces. Idea not built yet: a search box in the header.
-5. **LIVE on the test address https://aura.wp.kiapmd.dev** (23 Nov 2026). Folder moved to
+5. **LIVE at https://aura.kiapmd.dev** (23 Nov 2026; Porkbun A record `aura`, old test address aura.wp.kiapmd.dev forwards). Folder moved to
    `D:KIARASHWORKserverskia-netherlands-vpsaura`. Setup copied from meditrack:
    - `Dockerfile` (node:24-slim + openssl), `docker/start.sh` (prisma migrate deploy → seed → app),
      `compose.server.yml` (box `aura-app-1`, 256 MB, ~36 MB used), `deploy/receive-image.sh`, `deploy-hook.sh`,
@@ -78,8 +78,7 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
      so it works on any address. Tested: pages, 404, demo logins, checkout reaches Stripe.
    - Database: the server's shared Postgres (database + login `aura`), no longer Neon. Server `.env` in
      `/srv/aura/.env` has DATABASE_URL, STRIPEAPIKEY (test key, from the old `svelte-ecommerce/.env`), API_VERSION.
-   - **NEXT:** Kia adds a Porkbun DNS A record `aura` → 85.31.148.209. Then in the server repo's Caddyfile: serve
-     `aura.kiapmd.dev` and make `aura.wp.kiapmd.dev` redirect to it. Optional: Stripe webhook for
+   - **NEXT (optional):** Stripe webhook for
      `https://aura.kiapmd.dev/api/stripe-webhook` (event `checkout.session.completed`) → `STRIPE_WEBHOOK_SECRET`
      in the server .env. Then a README with screenshots (today's README is the default one).
 

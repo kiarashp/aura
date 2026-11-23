@@ -77,7 +77,7 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
    - No `ORIGIN`: the app reads its address from Caddy's X-Forwarded-Proto/Host headers (set in the Dockerfile),
      so it works on any address. Tested: pages, 404, demo logins, checkout reaches Stripe.
    - Database: the server's shared Postgres (database + login `aura`), no longer Neon. Server `.env` in
-     `/srv/aura/.env` has DATABASE_URL, STRIPEAPIKEY (test key, from the old `svelte-ecommerce/.env`), API_VERSION.
+     `/srv/aura/.env` has DATABASE_URL, STRIPEAPIKEY (test key of the Stripe account "Kiapmd"; the old `svelte-ecommerce/.env` and the Neon database were deleted 23 Nov 2026), API_VERSION.
    - Stripe webhook made 23 Nov 2026 through Stripe's API (test mode, id `we_1UezlgHkZSwZ0RnGJDUDtjmC`,
      event `checkout.session.completed`, URL `https://aura.kiapmd.dev/api/stripe-webhook`). Its secret is
      `STRIPE_WEBHOOK_SECRET` in the server .env. Tested: signed message 200, wrong signature 400.
@@ -93,9 +93,9 @@ Repo: https://github.com/kiarashp/aura (public, renamed from `svelte-kia`). Bran
 - Live address `aura.kiapmd.dev`, no new domain.
 - Vercel is being removed by Kia; Aura never used it.
 
-## Not judged by Kia yet
+## Kia's verdicts
 
-- The finished redesign as a whole (Kia saw the logo options and the 3 test pictures, not the built pages).
+- The finished redesign: accepted (23 Nov 2026).
 
 ## How to run and test
 
